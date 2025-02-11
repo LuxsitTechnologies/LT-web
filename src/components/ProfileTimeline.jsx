@@ -1,4 +1,4 @@
-import  { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
@@ -69,11 +69,11 @@ export default function ProfileTimeline() {
 
   return (
     <div className="min-h-screen bg-black" ref={containerRef}>
-      <div className="max-w-7xl mx-auto px-4 py-20">
-        <div className="grid md:grid-cols-2 gap-20">
+      <div className="max-w-7xl mx-auto px-4 py-10 md:py-20">
+        <div className="grid gap-10 md:grid-cols-2 md:gap-20">
           {/* Profile Section */}
-          <div className="space-y-8">
-            <h1 className="text-5xl font-bold text-white leading-tight">
+          <div className="space-y-6 md:space-y-8">
+            <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
               Full digital product expertise under one roof
             </h1>
             <div className="space-y-4">
@@ -82,26 +82,30 @@ export default function ProfileTimeline() {
                 alt="Profile"
                 width="400"
                 height="400"
-                className="rounded-2xl"
+                className="rounded-2xl w-full max-w-sm mx-auto"
               />
-              <h2 className="text-3xl font-bold text-white">Luxsit</h2>
-              <div className="flex items-center gap-2">
+              <h2 className="text-2xl md:text-3xl font-bold text-white text-center">
+                Luxsit
+              </h2>
+              <div className="flex items-center gap-2 justify-center">
                 <div className="w-2 h-2 bg-green-500 rounded-full" />
-                <p className="text-gray-400">
+                <p className="text-gray-400 text-sm md:text-base">
                   Connect with one of our leads today
                 </p>
               </div>
-              <button className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-                Book a free call
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <div className="flex justify-center">
+                <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 md:px-6 md:py-3 rounded-lg hover:bg-blue-700 transition-colors text-sm md:text-base">
+                  Book a free call
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </div>
 
           {/* Timeline Section */}
           <div className="relative">
             {/* Progress Line Container */}
-            <div className="absolute left-[40px] top-[40px] w-0.5 h-[calc(100%-80px)] bg-white/20">
+            <div className="absolute left-4 top-4 md:left-[40px] md:top-[40px] w-0.5 h-[calc(100%-32px)] md:h-[calc(100%-80px)] bg-white/20">
               <motion.div
                 className="w-full bg-white"
                 animate={{ height: `${progressPercent}%` }}
@@ -110,18 +114,18 @@ export default function ProfileTimeline() {
             </div>
 
             {/* Timeline Items */}
-            <div className="space-y-16">
+            <div className="space-y-8 md:space-y-16">
               {sections.map((section, index) => (
                 <motion.div
                   key={index}
                   id={`section-${index}`}
-                  className="flex gap-8"
+                  className="flex gap-4 md:gap-8"
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.7, ease: "easeOut" }}
                   viewport={{ once: true }}
                 >
-                  <div className="relative z-10 bg-black p-4 w-20 h-20 flex items-center justify-center">
+                  <div className="relative z-10 bg-black p-3 md:p-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
                     <img
                       src={section.icon || "/placeholder.svg"}
                       alt={section.title}
@@ -131,14 +135,14 @@ export default function ProfileTimeline() {
                   </div>
                   <div className="flex-1 pt-4">
                     <h3
-                      className={`text-2xl font-semibold mb-2 transition-colors duration-300 ${
+                      className={`text-xl md:text-2xl font-semibold mb-2 transition-colors duration-300 ${
                         index <= activeSection ? "text-white" : "text-gray-600"
                       }`}
                     >
                       {section.title}
                     </h3>
                     <p
-                      className={`transition-colors duration-300 ${
+                      className={`text-xs md:text-sm transition-colors duration-300 ${
                         index <= activeSection
                           ? "text-gray-400"
                           : "text-gray-600"

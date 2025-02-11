@@ -13,8 +13,68 @@ const sliderData = [
   [
     {
       color: "#e3e5e7",
-      src: "https://blog.appseed.us/content/images/size/w2000/2021/11/django-material-kit-hero-1.jpg",
+      src: "https://blog.appseed.us/content/images/size/w2000/2021/11/django-material-kit-hero-1.jpg ",
       gif: "https://blog.appseed.us/content/images/2021/11/ct-material-kit2-intro.gif",
+      gifThumb: "c2-thumb.jpg", // add a thumbnail image for the gif here
+      link: "#",
+    },
+    {
+      color: "#d6d7dc",
+      src: "decimal.jpg",
+      gif: "decimal.gif",
+      gifThumb: "decimal-thumb.jpg",
+      link: "#",
+    },
+    {
+      color: "#e3e3e3",
+      src: "funny.jpg",
+      gif: "funny.gif",
+      gifThumb: "funny-thumb.jpg",
+      link: "#",
+    },
+    {
+      color: "#21242b",
+      src: "google.jpg",
+      gif: "google.gif",
+      gifThumb: "google-thumb.jpg",
+      link: "#",
+    },
+  ],
+  [
+    {
+      color: "#d4e3ec",
+      src: "maven.jpg",
+      gif: "maven.gif",
+      gifThumb: "maven-thumb.jpg",
+      link: "#",
+    },
+    {
+      color: "#e5e0e1",
+      src: "panda.jpg",
+      gif: "panda.gif",
+      gifThumb: "panda-thumb.jpg",
+      link: "#",
+    },
+    {
+      color: "#d7d4cf",
+      src: "powell.jpg",
+      gif: "powell.gif",
+      gifThumb: "powell-thumb.jpg",
+      link: "#",
+    },
+    {
+      color: "#e1dad6",
+      src: "wix.jpg",
+      gif: "wix.gif",
+      gifThumb: "wix-thumb.jpg",
+      link: "#",
+    },
+  ],
+  [
+    {
+      color: "#e3e5e7",
+      src: "c2.jpg",
+      gif: "c2.gif",
       gifThumb: "c2-thumb.jpg",
       link: "#",
     },
@@ -41,7 +101,6 @@ const sliderData = [
     },
   ],
 ];
-
 function Portfolio() {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({

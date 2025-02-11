@@ -44,7 +44,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-black/50 backdrop-blur-md text-white px-20">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-black/50 backdrop-blur-md text-white p-4 md:px-20">
       {/* Logo */}
       <a
         href="#"
@@ -121,7 +121,7 @@ const Navbar = () => {
         }`}
       >
         <div className="flex flex-col items-center p-4 space-y-6">
-        <a
+          <a
             href="#Home"
             onClick={() => {
               setIsOpen(false);
