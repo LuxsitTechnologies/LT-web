@@ -1,7 +1,7 @@
 import  { useState, useRef, useEffect } from "react";
 import { Play, Pause, Volume2, VolumeX, Maximize, Rewind, FastForward } from "lucide-react";
-import { Button } from "./Button";
-import { Slider } from "./Slider";
+import { Button } from "../video/Button";
+import { Slider } from "../video/slider";
 
 export default function VideoPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
