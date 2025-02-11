@@ -1,4 +1,6 @@
 
+import PropTypes from "prop-types";
+
 export const Button = ({ size, variant, className, onClick, children }) => {
   return (
     <button
@@ -8,4 +10,19 @@ export const Button = ({ size, variant, className, onClick, children }) => {
       {children}
     </button>
   );
+};
+
+Button.propTypes = {
+  size: PropTypes.string,
+  variant: PropTypes.string,
+  className: PropTypes.string,
+  onClick: PropTypes.func,
+  children: PropTypes.node.isRequired,
+};
+
+Button.defaultProps = {
+  size: "",
+  variant: "",
+  className: "",
+  onClick: () => {},
 };

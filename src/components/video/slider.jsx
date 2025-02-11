@@ -1,4 +1,4 @@
-
+import PropTypes from "prop-types";
 
 export const Slider = ({ value, onValueChange, max, step, className }) => {
   const handleChange = (e) => {
@@ -15,4 +15,18 @@ export const Slider = ({ value, onValueChange, max, step, className }) => {
       className={className}
     />
   );
+};
+
+Slider.propTypes = {
+  value: PropTypes.arrayOf(PropTypes.number).isRequired,
+  onValueChange: PropTypes.func.isRequired,
+  max: PropTypes.number,
+  step: PropTypes.number,
+  className: PropTypes.string,
+};
+
+Slider.defaultProps = {
+  max: 100,
+  step: 1,
+  className: "",
 };
