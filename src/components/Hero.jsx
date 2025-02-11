@@ -1,5 +1,6 @@
-import { useEffect } from "react"
-import { motion, useAnimation } from "framer-motion"
+import { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import PropTypes from "prop-types";
 
 function FloatingPaths({ position }) {
   const paths = Array.from({ length: 36 }, (_, i) => ({
@@ -12,7 +13,7 @@ function FloatingPaths({ position }) {
       684 - i * 5 * position
     } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
     width: 0.5 + i * 0.03,
-  }))
+  }));
 
   return (
     <div className="absolute inset-0 pointer-events-none">
@@ -37,8 +38,12 @@ function FloatingPaths({ position }) {
         ))}
       </svg>
     </div>
-  )
+  );
 }
+
+FloatingPaths.propTypes = {
+  position: PropTypes.number.isRequired,
+};
 
 const textVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -51,7 +56,7 @@ const textVariants = {
       ease: "easeOut",
     },
   }),
-}
+};
 
 const buttonVariants = {
   hover: {
@@ -61,14 +66,14 @@ const buttonVariants = {
       duration: 0.3,
     },
   },
-}
+};
 
 function Hero() {
-  const controls = useAnimation()
+  const controls = useAnimation();
 
   useEffect(() => {
-    controls.start("visible")
-  }, [controls])
+    controls.start("visible");
+  }, [controls]);
 
   return (
     <motion.div
@@ -94,8 +99,13 @@ function Hero() {
           >
             We help startups build amazing products
           </motion.h1>
-          <motion.p className="text-xl mb-8 text-gray-300" variants={textVariants} custom={1}>
-            Luxsit Technologies is a non-conventional dev agency in New York, specializing in creating world-class AI, web and mobile apps.
+          <motion.p
+            className="text-xl mb-8 text-gray-300"
+            variants={textVariants}
+            custom={1}
+          >
+            Luxsit Technologies is a non-conventional dev agency in New York,
+            specializing in creating world-class AI, web and mobile apps.
           </motion.p>
 
           <motion.div variants={textVariants} custom={2}>
@@ -108,7 +118,11 @@ function Hero() {
             </motion.button>
           </motion.div>
 
-          <motion.div className="mt-12 flex items-center justify-center" variants={textVariants} custom={3}>
+          <motion.div
+            className="mt-12 flex items-center justify-center"
+            variants={textVariants}
+            custom={3}
+          >
             <div className="flex -space-x-4">
               {[1, 2, 3].map((i) => (
                 <motion.div
@@ -148,7 +162,7 @@ function Hero() {
         </motion.div>
       </div>
     </motion.div>
-  )
+  );
 }
 
-export default Hero
+export default Hero;
