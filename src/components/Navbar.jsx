@@ -93,7 +93,7 @@ const Navbar = () => {
       {/* Mobile Menu Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden p-2 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600 transition-colors"
+        className="md:hidden p-2 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600 transition-colors "
       >
         <div className="w-6 h-6 relative">
           <div

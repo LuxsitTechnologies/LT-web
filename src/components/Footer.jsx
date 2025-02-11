@@ -1,20 +1,10 @@
 const Footer = () => {
     return (
       <footer className="bg-black text-white py-16 relative">
-        {/* Background Pattern with increased opacity and proper z-index */}
-        <div
-          className="absolute inset-0 z-0 opacity-20"
-          style={{
-            backgroundImage: `url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rails-zI7dweRV6daPaYl0kEfEz9r7EeK2z5.svg')`,
-            backgroundRepeat: "repeat",
-            backgroundSize: "20px 10px",
-          }}
-        />
-  
         {/* Content Container with higher z-index */}
         <div className="container mx-auto px-4 relative z-10 text-[0.9375rem]">
           {/* Main Footer Links */}
-          <div className="flex justify-end">
+          <div className="flex justify-items-start  md:justify-end">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 w-[50%]">
               {/* Services Column */}
               <div className="space-y-4">
