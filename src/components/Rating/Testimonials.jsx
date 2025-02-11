@@ -126,7 +126,7 @@ const Testimonials = () => {
   return (
     <div className="bg-black px-4 py-16">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-12 text-center text-3xl font-bold text-white">Don't take our words for it</h2>
+        <h2 className="mb-12 text-center text-3xl font-bold text-white">Dont take our words for it</h2>
         <div className="grid gap-8 md:grid-cols-2">
           {testimonials.map((testimonial) => (
             <div key={testimonial.id} className="flex flex-col items-center text-center">

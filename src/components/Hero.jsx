@@ -114,7 +114,7 @@ function Hero() {
               whileHover="hover"
               variants={buttonVariants}
             >
-              Got A Project? Let's Talk!
+              Got A Project? Lets Talk!
             </motion.button>
           </motion.div>
 

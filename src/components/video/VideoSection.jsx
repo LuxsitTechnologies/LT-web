@@ -82,7 +82,7 @@ export default function VideoPlayer() {
 
   return (
     <div className="max-w-4xl mx-auto pt-20">
-       <h2 className="text-4xl font-bold mb-4 text-center text-white pb-8">In our client's words</h2>
+       <h2 className="text-4xl font-bold mb-4 text-center text-white pb-8">In our clients words</h2>
       <div
         className="relative aspect-video bg-black rounded-lg overflow-hidden shadow-xl"
         onMouseMove={handleMouseMove}
