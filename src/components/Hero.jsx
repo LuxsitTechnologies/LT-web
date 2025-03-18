@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
 function FloatingPaths({ position }) {
@@ -26,13 +25,13 @@ function FloatingPaths({ position }) {
             stroke="#147497"
             strokeWidth={path.width}
             strokeOpacity={0.1 + path.id * 0.03}
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: [0, 1], opacity: [0, 0.6, 0.3] }}
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
             transition={{
-              duration: 20 + Math.random() * 10,
+              duration: 15 + Math.random() * 5, // Vary duration for natural feel
               repeat: Number.POSITIVE_INFINITY,
-              ease: "linear",
-              delay: Math.random() * 2,
+              ease: "easeInOut",
+              delay: Math.random() * 3,
             }}
           />
         ))}
@@ -45,14 +44,15 @@ FloatingPaths.propTypes = {
   position: PropTypes.number.isRequired,
 };
 
+// Variants
 const textVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, y: 60 },
   visible: (i) => ({
     opacity: 1,
     y: 0,
     transition: {
-      delay: i * 0.1,
-      duration: 0.5,
+      delay: i * 0.15, // Slight delay for better stagger
+      duration: 0.6,
       ease: "easeOut",
     },
   }),
@@ -60,36 +60,33 @@ const textVariants = {
 
 const buttonVariants = {
   hover: {
-    scale: 1.05,
-    boxShadow: "0px 0px 8px rgb(59, 130, 246)",
+    scale: 1.07,
+    boxShadow: "0px 0px 12px rgba(59, 130, 246, 0.8)",
     transition: {
       duration: 0.3,
+      yoyo: Infinity,
     },
   },
 };
 
 function Hero() {
-  const controls = useAnimation();
-
-  useEffect(() => {
-    controls.start("visible");
-  }, [controls]);
-
   return (
     <motion.div
       className="relative min-h-screen w-full flex items-start justify-center pt-40 overflow-hidden bg-black text-white"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
     >
-      {/* Shift SVG lines upward by applying a transform on the container */}
-      <div className="absolute inset-0 pointer-events-none transform -translate-y-60 md:-translate-y-25">
+      {/* Animated SVG Background */}
+      <div className="absolute inset-0 pointer-events-none transform -translate-y-60 md:-translate-y-32">
         <FloatingPaths position={1} />
         <FloatingPaths position={-1} />
       </div>
 
+      {/* Hero Content */}
       <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
         <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+          variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
           className="max-w-4xl mx-auto"
         >
           <motion.h1
@@ -105,19 +102,21 @@ function Hero() {
             custom={1}
           >
             Luxsit Technologies is a non-conventional dev agency in New York,
-            specializing in creating world-class AI, web and mobile apps.
+            specializing in creating world-class AI, web, and mobile apps.
           </motion.p>
 
+          {/* Button Animation */}
           <motion.div variants={textVariants} custom={2}>
             <motion.button
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md text-lg font-semibold transition-all duration-300"
               whileHover="hover"
               variants={buttonVariants}
             >
-              Got A Project? Lets Talk!
+              Got A Project? Let’s Talk!
             </motion.button>
           </motion.div>
 
+          {/* Client Testimonials Animation */}
           <motion.div
             className="mt-12 flex items-center justify-center"
             variants={textVariants}
@@ -131,7 +130,7 @@ function Hero() {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <img
-                    src={``}
+                    src={`/dummy-client.jpg`}
                     alt={`Client ${i}`}
                     width="48"
                     height="48"

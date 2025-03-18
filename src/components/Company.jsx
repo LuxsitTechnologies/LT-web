@@ -8,45 +8,19 @@ const Company = () => {
   return (
     <section className="bg-black py-16 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-white text-center text-lg font-medium mb-16">
-          TRUSTED BY STARTUPS AND FORTUNE 500 COMPANIES
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
-          <div className="flex items-center justify-center">
-            <img
-              src={logo1}
-              alt="ClaimCore"
-              className="object-contain brightness-0 invert h-8 md:h-16"
-            />
-          </div>
-          <div className="flex items-center justify-center">
-            <img
-              src={logo2}
-              alt="Dobi"
-              className="object-contain brightness-0 invert h-13 md:h-16"
-            />
-          </div>
-          <div className="flex items-center justify-center">
-            <img
-              src={logo3}
-              alt="JetClean"
-              className="object-contain brightness-0 invert h-12 md:h-16"
-            />
-          </div>
-          <div className="flex items-center justify-center">
-            <img
-              src={logo4}
-              alt="Manqoosh"
-              className="object-contain brightness-0 invert h-12 md:h-16"
-            />
-          </div>
-          <div className="flex items-center justify-center">
-            <img
-              src={logo5}
-              alt="Risros"
-              className="object-contain brightness-0 invert h-12 md:h-16"
-            />
-          </div>
+        <h1 className="text-white text-center text-2xl md:text-3xl font-bold mb-12 uppercase tracking-wide">
+          Trusted by Startups & Fortune 500 Companies
+        </h1>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 items-center pt-6">
+          {[logo1, logo2, logo3, logo4, logo5].map((logo, index) => (
+            <div key={index} className="flex items-center justify-center">
+              <img
+                src={logo}
+                alt={`Company Logo ${index + 1}`}
+                className="object-contain h-14 md:h-20 transition-transform duration-300 hover:scale-110 cursor-pointer"
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>
