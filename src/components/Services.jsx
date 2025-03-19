@@ -3,16 +3,13 @@ import { useState } from "react";
 
 const services = [
   {
-    id: "01",
     title: "Automations",
     description:
       "We automate your workflows for highly profitable scale, custom and done-for-you.",
-    // Replace this with your custom icon component or import
     iconName: "automation",
     color: "#00C2FF"
   },
   {
-    id: "02",
     title: "Web Apps",
     description:
       "We build modern, secure and scalable web applications to simplify business processes for you.",
@@ -20,7 +17,6 @@ const services = [
     color: "#00E0A4"
   },
   {
-    id: "03",
     title: "Mobile Apps",
     description:
       "Our fast, responsive and highly scalable mobile app development will help you get ahead in no time!",
@@ -28,7 +24,6 @@ const services = [
     color: "#4D7CF3"
   },
   {
-    id: "04",
     title: "AI Solutions",
     description:
       "We build and deploy custom AI solutions that CEOs and founders brag about.",
@@ -74,8 +69,8 @@ const CustomIcon = ({ name }) => {
 const Services = () => {
   const [hoveredService, setHoveredService] = useState(null);
 
-  const handleServiceClick = (serviceId) => {
-    console.log(`Service ${serviceId} clicked`);
+  const handleServiceClick = (serviceTitle) => {
+    console.log(`Service ${serviceTitle} clicked`);
     // Add navigation or modal display logic here
   };
 
@@ -134,7 +129,7 @@ const Services = () => {
           Our Services
         </motion.h3>
         <motion.h2 
-          className="text-xl text-white pt-4"
+          className="text-xl text-gray-400 pt-4"
           variants={headingVariants}
         >
           AI-driven digital acceleration
@@ -149,14 +144,14 @@ const Services = () => {
         viewport={{ once: true, amount: 0.1 }}
         variants={containerVariants}
       >
-        {services.map((service) => (
+        {services.map((service, index) => (
           <motion.div
-            key={service.id}
+            key={index}
             className="bg-black border border-gray-800 rounded-lg p-6 overflow-hidden relative cursor-pointer transition-all duration-300"
             variants={itemVariants}
-            onMouseEnter={() => setHoveredService(service.id)}
+            onMouseEnter={() => setHoveredService(index)}
             onMouseLeave={() => setHoveredService(null)}
-            onClick={() => handleServiceClick(service.id)}
+            onClick={() => handleServiceClick(service.title)}
             whileHover={{ y: -5 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -164,8 +159,8 @@ const Services = () => {
               className="absolute -right-10 -top-10 w-20 h-20 rounded-full opacity-20"
               style={{ background: service.color }}
               animate={{
-                scale: hoveredService === service.id ? [1, 1.2, 1] : 1,
-                transition: { duration: 1.5, repeat: hoveredService === service.id ? Infinity : 0 }
+                scale: hoveredService === index ? [1, 1.2, 1] : 1,
+                transition: { duration: 1.5, repeat: hoveredService === index ? Infinity : 0 }
               }}
             />
             
@@ -173,8 +168,8 @@ const Services = () => {
             <motion.div 
               className="mb-6 p-3 inline-block rounded-full"
               style={{ 
-                background: hoveredService === service.id ? service.color : "rgba(0, 194, 255, 0.1)",
-                boxShadow: hoveredService === service.id ? `0 0 15px ${service.color}` : "none",
+                background: hoveredService === index ? service.color : "rgba(0, 194, 255, 0.1)",
+                boxShadow: hoveredService === index ? `0 0 15px ${service.color}` : "none",
                 color: "#ffffff"
               }}
               whileHover={{ rotate: [0, 5, -5, 0] }}
@@ -183,14 +178,10 @@ const Services = () => {
               <CustomIcon name={service.iconName} />
             </motion.div>
             
-            <div className="flex items-center mb-4">
-              <span className="text-cyan-400 font-mono text-sm mr-2">
-                {service.id}
-              </span>
-              <h3 className="text-xl font-bold text-white">
-                {service.title}
-              </h3>
-            </div>
+            {/* Service Title - Now in green without ID number */}
+            <h3 className="text-xl font-bold text-green-400 mb-4">
+              {service.title}
+            </h3>
             
             <p className="text-gray-400">
               {service.description}
@@ -203,7 +194,7 @@ const Services = () => {
               }}
               initial={{ width: 0 }}
               animate={{ 
-                width: hoveredService === service.id ? "100%" : "30%",
+                width: hoveredService === index ? "100%" : "30%",
                 transition: { duration: 0.3 }
               }}
             />

@@ -22,7 +22,7 @@ function FloatingPaths({ position }) {
           <motion.path
             key={path.id}
             d={path.d}
-            stroke="#147497"
+            stroke="#10B981" // Changed to green color
             strokeWidth={path.width}
             strokeOpacity={0.1 + path.id * 0.03}
             initial={{ pathLength: 0 }}
@@ -61,7 +61,7 @@ const textVariants = {
 const buttonVariants = {
   hover: {
     scale: 1.07,
-    boxShadow: "0px 0px 12px rgba(59, 130, 246, 0.8)",
+    boxShadow: "0px 0px 12px rgba(34, 197, 94, 0.8)", // Changed to green glow
     transition: {
       duration: 0.3,
       yoyo: Infinity,
@@ -108,11 +108,11 @@ function Hero() {
           {/* Button Animation */}
           <motion.div variants={textVariants} custom={2}>
             <motion.button
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md text-lg font-semibold transition-all duration-300"
+              className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-md text-lg font-semibold transition-all duration-300"
               whileHover="hover"
               variants={buttonVariants}
             >
-              Got A Project? Let’s Talk!
+              Got A Project? Let's Talk!
             </motion.button>
           </motion.div>
 
@@ -149,13 +149,13 @@ function Hero() {
                 200+ successful clients.
               </motion.p>
               <motion.a
-                href="#testimonials"
-                className="text-blue-400 hover:underline inline-block"
-                whileHover={{ x: 5, color: "#60A5FA" }}
-                transition={{ type: "spring", stiffness: 400 }}
-              >
-                Read testimonials →
-              </motion.a>
+  href="#testimonials"
+  className="text-green-500 hover:text-green-600 hover:underline inline-block font-semibold"
+  whileHover={{ x: 5 }}
+  transition={{ type: "spring", stiffness: 400 }}
+>
+  Read testimonials →
+</motion.a>
             </div>
           </motion.div>
         </motion.div>

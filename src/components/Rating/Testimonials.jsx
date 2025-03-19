@@ -17,7 +17,7 @@ const testimonials = [
     content:
       "Their team provides great design and has a great sense of user experience and aesthetics. They deliver on time and are excellent communicators.",
     rating: 3.5,
-    color: "#00C2FF"
+    color: "#00C2FF", // Keeping cyan color from your theme
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ const testimonials = [
     content:
       "Amazing developers with an eye for aesthetics. We had pretty vigorous requests and they hit every single one.",
     rating: 4,
-    color: "#00E0A4"
+    color: "#00E0A4", // Green color from your theme
   },
   {
     id: 3,
@@ -49,7 +49,7 @@ const testimonials = [
     content:
       "They exceeded our expectations. Super easy to work with their engineering team, incredibly intelligent, and perceptive.",
     rating: 3.5,
-    color: "#4D7CF3"
+    color: "#00C2FF", // Changed to cyan to match theme
   },
   {
     id: 4,
@@ -65,7 +65,7 @@ const testimonials = [
     content:
       "Working with them has been great! We've been working together for over 2 years now and the experience is just out of this planet.",
     rating: 5,
-    color: "#00E099"
+    color: "#00E0A4", // Green color from your theme
   },
   {
     id: 5,
@@ -81,7 +81,7 @@ const testimonials = [
     content:
       "They are clearly the best dev agency I have worked with. The project went smoothly, and we're happy with the outcome!",
     rating: 4.5,
-    color: "#00C2FF"
+    color: "#00C2FF", // Keeping cyan color from your theme
   },
   {
     id: 6,
@@ -97,7 +97,7 @@ const testimonials = [
     content:
       "Excellent development services! I recently had the pleasure of working with them on a fintech project, and I am thoroughly impressed.",
     rating: 2.5,
-    color: "#00E0A4"
+    color: "#00E0A4", // Green color from your theme
   },
   {
     id: 7,
@@ -113,7 +113,7 @@ const testimonials = [
     content:
       "It doesn't feel like an external team, it feels like we're just working together. One team with one goal. Super happy!",
     rating: 5,
-    color: "#4D7CF3"
+    color: "#00C2FF", // Changed to cyan to match theme
   },
   {
     id: 8,
@@ -126,9 +126,10 @@ const testimonials = [
       name: "WebAgency",
       logo: "public/tech-corp-logo1.webp",
     },
-    content: "They have an incredible remote culture. It really makes working together easy and efficient.",
+    content:
+      "They have an incredible remote culture. It really makes working together easy and efficient.",
     rating: 4,
-    color: "#00E099"
+    color: "#00E0A4", // Green color from your theme
   },
 ];
 
@@ -176,15 +177,15 @@ const Testimonials = () => {
       {/* Background lines similar to your other sections */}
       <div className="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
         {[...Array(5)].map((_, i) => (
-          <div 
-            key={i} 
-            className="absolute h-px bg-cyan-400" 
+          <div
+            key={i}
+            className="absolute h-px bg-cyan-400" // Changed to cyan to match theme
             style={{
               width: `${Math.random() * 30 + 40}%`,
               left: `${Math.random() * 60}%`,
-              top: `${(i * 20) + Math.random() * 5}%`,
+              top: `${i * 20 + Math.random() * 5}%`,
               transform: `rotate(${Math.random() * 5}deg)`,
-              opacity: 0.5 + Math.random() * 0.5
+              opacity: 0.5 + Math.random() * 0.5,
             }}
           />
         ))}
@@ -197,20 +198,23 @@ const Testimonials = () => {
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
         >
-          <motion.h2 
-            className="mb-4 text-center text-lg font-medium uppercase tracking-wider text-cyan-400"
+          <motion.h2
+            className="mb-2 text-center text-3xl md:text-5xl font-bold uppercase tracking-wider text-white pt-6 mb-3"
             variants={headingVariants}
           >
             Testimonials
           </motion.h2>
-          <motion.h3 
-            className="mb-12 text-center text-3xl md:text-5xl font-bold text-white"
+          <motion.h3
+            className="mb-12 text-center text-lg md:text-xl font-medium text-white"
             variants={headingVariants}
           >
             Don't take our word for it
           </motion.h3>
 
-          <motion.div className="grid gap-8 md:grid-cols-2" variants={containerVariants}>
+          <motion.div
+            className="grid gap-8 md:grid-cols-2"
+            variants={containerVariants}
+          >
             {testimonials.map((testimonial) => (
               <motion.div
                 key={testimonial.id}
@@ -222,17 +226,20 @@ const Testimonials = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 {/* Background glow */}
-                <motion.div 
+                <motion.div
                   className="absolute -right-10 -top-10 w-20 h-20 rounded-full opacity-20"
                   style={{ background: testimonial.color }}
                   animate={{
                     scale: hoveredCard === testimonial.id ? [1, 1.2, 1] : 1,
-                    transition: { duration: 1.5, repeat: hoveredCard === testimonial.id ? Infinity : 0 }
+                    transition: {
+                      duration: 1.5,
+                      repeat: hoveredCard === testimonial.id ? Infinity : 0,
+                    },
                   }}
                 />
 
                 {/* Rating */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.1, duration: 0.3 }}
@@ -241,7 +248,7 @@ const Testimonials = () => {
                 </motion.div>
 
                 {/* Content */}
-                <motion.p 
+                <motion.p
                   className="mt-4 text-gray-300"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -251,22 +258,26 @@ const Testimonials = () => {
                 </motion.p>
 
                 {/* Author info */}
-                <motion.div 
+                <motion.div
                   className="mt-6 flex items-center gap-4"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3, duration: 0.3 }}
                 >
-                  <motion.img 
-                    src={testimonial.author.image || "/placeholder.svg"} 
-                    alt="" 
+                  <motion.img
+                    src={testimonial.author.image || "/placeholder.svg"}
+                    alt=""
                     className="h-12 w-12 rounded-full border-2"
                     style={{ borderColor: testimonial.color }}
                     whileHover={{ scale: 1.1 }}
                   />
                   <div className="text-left">
-                    <div className="font-semibold text-white">{testimonial.author.name}</div>
-                    <div className="text-sm text-gray-400">{testimonial.author.title}</div>
+                    <div className="font-semibold text-green-400">
+                      {testimonial.author.name}
+                    </div>
+                    <div className="text-sm text-gray-400">
+                      {testimonial.author.title}
+                    </div>
                   </div>
                   <motion.img
                     src={testimonial.company.logo || "/placeholder.svg"}
@@ -277,15 +288,15 @@ const Testimonials = () => {
                 </motion.div>
 
                 {/* Animated underline */}
-                <motion.div 
+                <motion.div
                   className="h-0.5 mt-6 rounded-full"
-                  style={{ 
-                    background: `linear-gradient(to right, ${testimonial.color}, rgba(0, 194, 255, 0.3))` 
+                  style={{
+                    background: `linear-gradient(to right, ${testimonial.color}, rgba(0, 194, 255, 0.3))`,
                   }}
                   initial={{ width: 0 }}
-                  animate={{ 
+                  animate={{
                     width: hoveredCard === testimonial.id ? "100%" : "30%",
-                    transition: { duration: 0.3 }
+                    transition: { duration: 0.3 },
                   }}
                 />
               </motion.div>
