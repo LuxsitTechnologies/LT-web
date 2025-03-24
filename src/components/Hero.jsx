@@ -15,6 +15,7 @@ function FloatingPaths({ position }) {
     width: 0.5 + i * 0.03,
   }));
 
+
   return (
     <div className="absolute inset-0 pointer-events-none">
       <svg className="w-full h-full" viewBox="0 0 696 316" fill="none">
@@ -23,16 +24,20 @@ function FloatingPaths({ position }) {
           <motion.path
             key={path.id}
             d={path.d}
-            stroke="#10B981" // Changed to green color
+            stroke="#10B981" // Green color
             strokeWidth={path.width}
             strokeOpacity={0.1 + path.id * 0.03}
             initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
+            animate={{ 
+              pathLength: [0, 1, 0], // Continuous flow animation
+            }}
             transition={{
-              duration: 15 + Math.random() * 5, // Vary duration for natural feel
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-              delay: Math.random() * 3,
+              duration: 10, // Slightly faster for more fluid motion
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "linear", // Linear easing for constant speed
+              // Very minimal staggering to create wave-like effect without delays
+              delay: (path.id % 4) * 0.15, 
             }}
           />
         ))}
