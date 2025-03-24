@@ -1,10 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Lightbulb, Palette, Code, Settings, TrendingUp } from "lucide-react";
+import BookingFormModal from "./BookingFormModal";
 
 export default function ProfileTimeline() {
   const containerRef = useRef(null);
   const [activeSection, setActiveSection] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false); // Add state for the modal
+
+  // Functions to handle the modal
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const sections = [
     {
@@ -87,7 +93,7 @@ export default function ProfileTimeline() {
             </h2>
             <div className="space-y-6">
               <img
-                src="public/luxsit_technologie.png"
+                src="src/assets/file (1) 1 (1).svg"
                 alt="Profile"
                 width="400"
                 height="400"
@@ -103,10 +109,15 @@ export default function ProfileTimeline() {
                 </p>
               </div>
               <div className="flex justify-center">
-                <button className="flex items-center gap-2 bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition-colors text-base font-medium">
+                <motion.button 
+                  className="flex items-center gap-2 bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition-colors text-base font-medium"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={openModal} // Added onClick to open the modal
+                >
                   Book a free call
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </motion.button>
               </div>
             </div>
           </div>
@@ -162,6 +173,9 @@ export default function ProfileTimeline() {
           </div>
         </div>
       </div>
+
+      {/* Booking Form Modal */}
+      <BookingFormModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 }

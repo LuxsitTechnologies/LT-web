@@ -134,7 +134,7 @@ const Footer = () => {
         
         {/* Footer Bottom - Copyright & Social Links */}
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm animate-on-scroll opacity-0 transform translate-y-4" style={{ transitionDelay: '900ms' }}>© 2025 Your Company. All rights reserved.</p>
+          <p className="text-gray-400 text-sm animate-on-scroll opacity-0 transform translate-y-4" style={{ transitionDelay: '900ms' }}>© 2025 LUXSIT TECHNOLOGIES. All rights reserved.</p>
           
           {/* Social Links */}
           <div className="flex gap-6 text-gray-400 text-xl mt-4 md:mt-0 animate-on-scroll opacity-0 transform translate-y-4" style={{ transitionDelay: '1000ms' }}>
