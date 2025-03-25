@@ -118,13 +118,13 @@ const Footer = () => {
           {/* Partner Logos */}
           <div className="flex items-center gap-6 animate-on-scroll opacity-0 transform translate-y-4" style={{ transitionDelay: '700ms' }}>
             <div className="h-8 overflow-hidden relative group">
-              <img src="public/google.png" alt="Google Partner" className="h-8 transition-transform duration-500 transform group-hover:scale-110" />
+              <img src="google.png" alt="Google Partner" className="h-8 transition-transform duration-500 transform group-hover:scale-110" />
             </div>
             <div className="h-8 overflow-hidden relative group">
-              <img src="public/awaards.jpg" alt="Awwwards" className="h-8 transition-transform duration-500 transform group-hover:scale-110" />
+              <img src="awaards.jpg" alt="Awwwards" className="h-8 transition-transform duration-500 transform group-hover:scale-110" />
             </div>
             <div className="h-8 overflow-hidden relative group">
-              <img src="public/Microsoft-Logo.png" alt="Microsoft" className="h-8 transition-transform duration-500 transform group-hover:scale-110" />
+              <img src="Microsoft-Logo.png" alt="Microsoft" className="h-8 transition-transform duration-500 transform group-hover:scale-110" />
             </div>
           </div>
         </div>

@@ -8,11 +8,11 @@ const testimonials = [
     author: {
       name: "Sarah Mitchell",
       title: "Founder, TechCorp",
-      image: "public/dummy-client.jpg",
+      image: "dummy-client.jpg",
     },
     company: {
       name: "TechCorp",
-      logo: "public/tech-corp-logo1.webp",
+      logo: "tech-corp-logo1.webp",
     },
     content:
       "Their team provides great design and has a great sense of user experience and aesthetics. They deliver on time and are excellent communicators.",
@@ -24,11 +24,11 @@ const testimonials = [
     author: {
       name: "Michael Chen",
       title: "Co-founder, InnovateLabs",
-      image: "public/dummy-client.jpg",
+      image: "dummy-client.jpg",
     },
     company: {
       name: "InnovateLabs",
-      logo: "public/tech-corp-logo1.webp",
+      logo: "tech-corp-logo1.webp",
     },
     content:
       "Amazing developers with an eye for aesthetics. We had pretty vigorous requests and they hit every single one.",
@@ -40,11 +40,11 @@ const testimonials = [
     author: {
       name: "Emma Thompson",
       title: "Medical Director, HealthTech",
-      image: "public/dummy-client.jpg",
+      image: "dummy-client.jpg",
     },
     company: {
       name: "HealthTech",
-      logo: "public/tech-corp-logo1.webp",
+      logo: "tech-corp-logo1.webp",
     },
     content:
       "They exceeded our expectations. Super easy to work with their engineering team, incredibly intelligent, and perceptive.",
@@ -56,11 +56,11 @@ const testimonials = [
     author: {
       name: "David Wilson",
       title: "Co-founder, CloudSys",
-      image: "public/dummy-client.jpg",
+      image: "dummy-client.jpg",
     },
     company: {
       name: "CloudSys",
-      logo: "public/tech-corp-logo1.webp",
+      logo: "tech-corp-logo1.webp",
     },
     content:
       "Working with them has been great! We've been working together for over 2 years now and the experience is just out of this planet.",
@@ -72,11 +72,11 @@ const testimonials = [
     author: {
       name: "Rachel Adams",
       title: "Managing Director, DataFlow",
-      image: "public/dummy-client.jpg",
+      image: "dummy-client.jpg",
     },
     company: {
       name: "DataFlow",
-      logo: "public/tech-corp-logo1.webp",
+      logo: "tech-corp-logo1.webp",
     },
     content:
       "They are clearly the best dev agency I have worked with. The project went smoothly, and we're happy with the outcome!",
@@ -88,11 +88,11 @@ const testimonials = [
     author: {
       name: "James Lee",
       title: "Co-Founder, TechVision",
-      image: "public/dummy-client.jpg",
+      image: "dummy-client.jpg",
     },
     company: {
       name: "TechVision",
-      logo: "public/tech-corp-logo1.webp",
+      logo: "tech-corp-logo1.webp",
     },
     content:
       "Excellent development services! I recently had the pleasure of working with them on a fintech project, and I am thoroughly impressed.",
@@ -104,11 +104,11 @@ const testimonials = [
     author: {
       name: "Anna Martinez",
       title: "Principal Product Designer",
-      image: "public/dummy-client.jpg",
+      image: "dummy-client.jpg",
     },
     company: {
       name: "DesignCo",
-      logo: "public/tech-corp-logo1.webp",
+      logo: "tech-corp-logo1.webp",
     },
     content:
       "It doesn't feel like an external team, it feels like we're just working together. One team with one goal. Super happy!",
@@ -120,11 +120,11 @@ const testimonials = [
     author: {
       name: "Robert Kim",
       title: "Founder, WebAgency",
-      image: "public/dummy-client.jpg",
+      image: "dummy-client.jpg",
     },
     company: {
       name: "WebAgency",
-      logo: "public/tech-corp-logo1.webp",
+      logo: "tech-corp-logo1.webp",
     },
     content:
       "They have an incredible remote culture. It really makes working together easy and efficient.",
