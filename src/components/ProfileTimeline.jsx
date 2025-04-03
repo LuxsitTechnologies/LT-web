@@ -14,31 +14,31 @@ export default function ProfileTimeline() {
 
   const sections = [
     {
-      icon: <Lightbulb size={20} className="text-green-500" />,
-      title: "Ideate",
+      icon: <Lightbulb size={20} className="text-[#177399]" />,
+      title: "Idea",
       description:
         "Whether you want to consult an idea, add missing capabilities, quickly expand your team, or hand over a project - we've got you covered.",
     },
     {
-      icon: <Palette size={20} className="text-green-500" />,
+      icon: <Palette size={20} className="text-[#177399]" />,
       title: "Design",
       description:
         "Craft delightful user experiences for your digital products. Solve real problems and improve your vital business metrics through beautiful interfaces.",
     },
     {
-      icon: <Code size={20} className="text-green-500" />,
+      icon: <Code size={20} className="text-[#177399]" />,
       title: "Develop",
       description:
         "Create beautiful, fast, and secure applications tailored precisely to your business goals.",
     },
     {
-      icon: <Settings size={20} className="text-green-500" />,
+      icon: <Settings size={20} className="text-[#177399]" />,
       title: "Maintain",
       description:
         "Our tech team is here to stay to make sure your users are entertained 24/7 while we build extraordinary systems on the go.",
     },
     {
-      icon: <TrendingUp size={20} className="text-green-500" />,
+      icon: <TrendingUp size={20} className="text-[#177399]" />,
       title: "Scale",
       description:
         "Scale bigger with us. Collaborating with us will have a lasting impact—gain the flexibility to adjust and expand!",
@@ -81,7 +81,6 @@ export default function ProfileTimeline() {
             Our Services
           </h1>
           <p className="text-xl text-gray-400">
-            AI-driven digital acceleration
           </p>
         </div>
 
@@ -93,7 +92,7 @@ export default function ProfileTimeline() {
             </h2>
             <div className="space-y-6">
               <img
-                src="src/assets/file (1) 1 (1).svg"
+                src="src/assets/azk.jpg"
                 alt="Profile"
                 width="400"
                 height="400"
@@ -103,14 +102,14 @@ export default function ProfileTimeline() {
                 LUXSIT TECHNOLOGIES
               </h3>
               <div className="flex items-center gap-2 justify-center">
-                <div className="w-2 h-2 bg-green-500 rounded-full" />
+                <div className="w-2 h-2 bg-[#177399] rounded-full" />
                 <p className="text-gray-400 text-sm md:text-base">
                   Connect with one of our leads today
                 </p>
               </div>
               <div className="flex justify-center">
                 <motion.button 
-                  className="flex items-center gap-2 bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition-colors text-base font-medium"
+                  className="flex items-center gap-2 bg-[#177399] text-white px-6 py-3 rounded-full hover:bg-[#146088] transition-colors text-base font-medium"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={openModal} // Added onClick to open the modal
@@ -127,7 +126,7 @@ export default function ProfileTimeline() {
             {/* Progress Line Container */}
             <div className="absolute left-5 top-5 md:left-[40px] md:top-[40px] w-0.5 h-[calc(100%-40px)] bg-white/10">
               <motion.div
-                className="w-full bg-green-500"
+                className="w-full bg-[#177399]"
                 animate={{ height: `${progressPercent}%` }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
               />
@@ -151,7 +150,7 @@ export default function ProfileTimeline() {
                   <div className="flex-1 pt-1">
                     <h3
                       className={`text-xl md:text-2xl font-semibold mb-2 transition-colors duration-300 ${
-                        index <= activeSection ? "text-green-500" : "text-gray-600"
+                        index <= activeSection ? "text-[#177399]" : "text-gray-600"
                       }`}
                     >
                       {section.title}
@@ -165,7 +164,7 @@ export default function ProfileTimeline() {
                     >
                       {section.description}
                     </p>
-                    <div className="h-1 w-16 bg-green-500/80 mt-4 rounded-full"></div>
+                    <div className="h-1 w-16 bg-[#177399]/80 mt-4 rounded-full"></div>
                   </div>
                 </motion.div>
               ))}

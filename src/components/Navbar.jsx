@@ -162,7 +162,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full bg-gray-800 border border-white/30 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                    className="w-full bg-gray-800 border border-white/30 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                     placeholder="John Doe"
                   />
                 </motion.div>
@@ -178,7 +178,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full bg-gray-800 border border-white/30 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                    className="w-full bg-gray-800 border border-white/30 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                     placeholder="john@example.com"
                   />
                 </motion.div>
@@ -193,7 +193,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full bg-gray-800 border border-white/30 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                    className="w-full bg-gray-800 border border-white/30 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                     placeholder="Your Company"
                   />
                 </motion.div>
@@ -208,7 +208,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                     value={formData.service}
                     onChange={handleChange}
                     required
-                    className="w-full bg-gray-800 border border-white/30 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                    className="w-full bg-gray-800 border border-white/30 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                   >
                     <option disabled>Select a service</option>
                     <option value="Automations">Automations</option>
@@ -230,7 +230,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                     onChange={handleChange}
                     required
                     rows="4"
-                    className="w-full bg-gray-800 border border-white/30 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                    className="w-full bg-gray-800 border border-white/30 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                     placeholder="Tell us about your project, goals, and timeline..."
                   ></textarea>
                 </motion.div>
@@ -238,7 +238,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                 <motion.div className="md:col-span-2" variants={itemVariants}>
                   <motion.button
                     type="submit"
-                    className="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-full font-medium text-sm"
+                    className="w-full bg-[#177399] hover:bg-[#155b75] text-white py-2 px-4 rounded-full font-medium text-sm"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -311,7 +311,7 @@ const Navbar = () => {
       >
         {/* Logo */}
         <a href="#" className="text-xl font-bold hover:scale-105 transition-transform">
-          <img src={logo} alt="Logo" className="h-14 brightness-0 invert" />
+          <img src={logo} alt="Logo" className="h-14 " />
         </a>
 
         {/* Desktop Navigation */}
@@ -321,8 +321,8 @@ const Navbar = () => {
               key={item}
               href={`#${item}`}
               onClick={() => setActiveLink(item)}
-              className={`relative transition-all duration-300 hover:text-gray-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full ${
-                activeLink === item ? "text-green-400 after:w-full" : ""
+              className={`relative transition-all duration-300 hover:text-gray-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#177399] after:transition-all after:duration-300 hover:after:w-full ${
+                activeLink === item ? "text-[#177399] after:w-full" : ""
               }`}
             >
               {item.charAt(0).toUpperCase() + item.slice(1)}
@@ -332,7 +332,7 @@ const Navbar = () => {
 
         {/* Hire Us Button - Now opens the modal */}
         <motion.button
-          className="hidden md:block bg-green-500 text-white hover:bg-green-600 px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
+          className="hidden md:block bg-[#177399] text-white hover:bg-[#155b75] px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
           whileHover={{ scale: 1.1 }}
           onClick={openModal}
         >
@@ -365,7 +365,7 @@ const Navbar = () => {
                   setIsOpen(false);
                   setActiveLink(item);
                 }}
-                className={`text-lg transition-colors duration-300 ${activeLink === item ? "text-green-400" : "hover:text-gray-300"}`}
+                className={`text-lg transition-colors duration-300 ${activeLink === item ? "text-[#177399]" : "hover:text-gray-300"}`}
               >
                 {item.charAt(0).toUpperCase() + item.slice(1)}
               </motion.a>
@@ -373,7 +373,7 @@ const Navbar = () => {
 
             {/* Mobile Hire Us Button - Now opens the modal */}
             <motion.button
-              className="bg-green-500 text-white hover:bg-green-600 px-6 py-2 rounded-full transition-all duration-300 w-full max-w-[200px]"
+              className="bg-[#177399] text-white hover:bg-[#155b75] px-6 py-2 rounded-full transition-all duration-300 w-full max-w-[200px]"
               whileHover={{ scale: 1.1 }}
               onClick={() => {
                 setIsOpen(false); // Close the mobile menu

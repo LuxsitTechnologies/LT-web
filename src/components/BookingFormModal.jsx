@@ -144,12 +144,12 @@ const BookingFormModal = ({ isOpen, onClose }) => {
 
           {submitted ? (
             <motion.div 
-              className="text-center p-4 bg-green-900/20 rounded-lg border border-green-500"
+              className="text-center p-4 bg-[#177399]/20 rounded-lg border border-[#177399]"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
             >
-              <h3 className="text-lg font-bold text-green-500 mb-2">Call Scheduled!</h3>
+              <h3 className="text-lg font-bold text-[#177399] mb-2">Call Scheduled!</h3>
               <p className="text-sm">We've received your booking request and will confirm your appointment via email shortly.</p>
             </motion.div>
           ) : (
@@ -170,7 +170,7 @@ const BookingFormModal = ({ isOpen, onClose }) => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full bg-gray-800 border border-gray-700 rounded-md p-1.5 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                    className="w-full bg-gray-800 border border-gray-700 rounded-md p-1.5 text-white focus:outline-none focus:ring-2 focus:ring-[#177399] text-sm"
                     placeholder="John Doe"
                   />
                 </motion.div>
@@ -186,7 +186,7 @@ const BookingFormModal = ({ isOpen, onClose }) => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full bg-gray-800 border border-gray-700 rounded-md p-1.5 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                    className="w-full bg-gray-800 border border-gray-700 rounded-md p-1.5 text-white focus:outline-none focus:ring-2 focus:ring-[#177399] text-sm"
                     placeholder="john@example.com"
                   />
                 </motion.div>
@@ -201,7 +201,7 @@ const BookingFormModal = ({ isOpen, onClose }) => {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full bg-gray-800 border border-gray-700 rounded-md p-1.5 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                    className="w-full bg-gray-800 border border-gray-700 rounded-md p-1.5 text-white focus:outline-none focus:ring-2 focus:ring-[#177399] text-sm"
                     placeholder="Your Company"
                   />
                 </motion.div>
@@ -217,7 +217,7 @@ const BookingFormModal = ({ isOpen, onClose }) => {
                     value={formData.phoneNumber}
                     onChange={handleChange}
                     required
-                    className="w-full bg-gray-800 border border-gray-700 rounded-md p-1.5 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                    className="w-full bg-gray-800 border border-gray-700 rounded-md p-1.5 text-white focus:outline-none focus:ring-2 focus:ring-[#177399] text-sm"
                     placeholder="+1 (123) 456-7890"
                   />
                 </motion.div>
@@ -232,7 +232,7 @@ const BookingFormModal = ({ isOpen, onClose }) => {
                     value={formData.projectType}
                     onChange={handleChange}
                     required
-                    className="w-full bg-gray-800 border border-gray-700 rounded-md p-1.5 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                    className="w-full bg-gray-800 border border-gray-700 rounded-md p-1.5 text-white focus:outline-none focus:ring-2 focus:ring-[#177399] text-sm"
                   >
                     <option disabled>Select a project type</option>
                     <option value="AI Solutions">AI Solutions</option>
@@ -255,7 +255,7 @@ const BookingFormModal = ({ isOpen, onClose }) => {
                     value={formData.preferredDate}
                     onChange={handleChange}
                     required
-                    className="w-full bg-gray-800 border border-gray-700 rounded-md p-1.5 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                    className="w-full bg-gray-800 border border-gray-700 rounded-md p-1.5 text-white focus:outline-none focus:ring-2 focus:ring-[#177399] text-sm"
                   />
                 </motion.div>
 
@@ -269,7 +269,7 @@ const BookingFormModal = ({ isOpen, onClose }) => {
                     value={formData.preferredTime}
                     onChange={handleChange}
                     required
-                    className="w-full bg-gray-800 border border-gray-700 rounded-md p-1.5 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                    className="w-full bg-gray-800 border border-gray-700 rounded-md p-1.5 text-white focus:outline-none focus:ring-2 focus:ring-[#177399] text-sm"
                   >
                     <option value="">Select a time</option>
                     <option value="Morning (9am-12pm)">Morning (9am-12pm)</option>
@@ -288,7 +288,7 @@ const BookingFormModal = ({ isOpen, onClose }) => {
                     value={formData.message}
                     onChange={handleChange}
                     rows="3"
-                    className="w-full bg-gray-800 border border-gray-700 rounded-md p-1.5 text-white focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                    className="w-full bg-gray-800 border border-gray-700 rounded-md p-1.5 text-white focus:outline-none focus:ring-2 focus:ring-[#177399] text-sm"
                     placeholder="Brief description of your project..."
                   ></textarea>
                 </motion.div>
@@ -296,7 +296,7 @@ const BookingFormModal = ({ isOpen, onClose }) => {
                 <motion.div className="md:col-span-2" variants={itemVariants}>
                   <motion.button
                     type="submit"
-                    className="w-full bg-green-600 hover:bg-green-700 text-white py-1.5 px-4 rounded-full font-medium text-sm"
+                    className="w-full bg-[#177399] hover:bg-[#146088] text-white py-1.5 px-4 rounded-full font-medium text-sm"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >

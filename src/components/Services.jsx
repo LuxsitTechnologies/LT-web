@@ -8,28 +8,28 @@ const services = [
     description:
       "We automate your workflows for highly profitable scale, custom and done-for-you.",
     iconName: "automation",
-    color: "#00C2FF"
+    color: "#177399"
   },
   {
     title: "Web Apps",
     description:
       "We build modern, secure and scalable web applications to simplify business processes for you.",
     iconName: "webApp",
-    color: "#00E0A4"
+    color: "#177399"
   },
   {
     title: "Mobile Apps",
     description:
       "Our fast, responsive and highly scalable mobile app development will help you get ahead in no time!",
     iconName: "mobileApp",
-    color: "#4D7CF3"
+    color: "#177399"
   },
   {
     title: "AI Solutions",
     description:
       "We build and deploy custom AI solutions that CEOs and founders brag about.",
     iconName: "aiSolution",
-    color: "#00E099"
+    color: "#177399"
   },
 ];
 
@@ -71,26 +71,27 @@ const CustomIcon = ({ name }) => {
 const AutomationDetailModal = ({ isOpen, onClose }) => {
   const automationDetails = [
     {
-      title: "Workflow Mapping",
-      description: "We analyze your current business processes and identify optimization opportunities.",
-      icon: "🗺️"
+      title: "Process Automation",
+      description: "Automate repetitive tasks to enhance efficiency and reduce manual effort.",
+      icon: "⚙️"
     },
     {
-      title: "Custom Automation Design",
-      description: "Develop tailored automation strategies that align with your unique business needs.",
+      title: "AI-Powered Workflows",
+      description: "Leverage AI to streamline operations and optimize decision-making.",
       icon: "🤖"
     },
     {
-      title: "Implementation & Integration",
-      description: "Seamlessly integrate automated solutions with your existing tools and systems.",
+      title: "System Integration",
+      description: "Connect multiple platforms and tools for seamless data flow and automation.",
       icon: "🔗"
     },
     {
-      title: "Continuous Optimization",
-      description: "Ongoing monitoring and refinement to ensure maximum efficiency and ROI.",
-      icon: "📈"
+      title: "Real-Time Monitoring",
+      description: "Track and analyze automated processes to ensure performance and scalability.",
+      icon: "📊"
     }
   ];
+
 
   if (!isOpen) return null;
 
@@ -115,7 +116,7 @@ const AutomationDetailModal = ({ isOpen, onClose }) => {
         </button>
 
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-green-400 mb-4">
+          <h2 className="text-3xl font-bold text-[#177399] mb-4">
             Automation Services
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
@@ -133,7 +134,7 @@ const AutomationDetailModal = ({ isOpen, onClose }) => {
               transition={{ delay: index * 0.2 }}
             >
               <div className="text-4xl mb-4">{detail.icon}</div>
-              <h3 className="text-xl font-semibold text-green-400 mb-3">
+              <h3 className="text-xl font-semibold text-[#177399] mb-3">
                 {detail.title}
               </h3>
               <p className="text-gray-300">
@@ -195,7 +196,7 @@ const WebAppsDetailModal = ({ isOpen, onClose }) => {
         </button>
 
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-green-400 mb-4">
+          <h2 className="text-3xl font-bold text-[#177399] mb-4">
             Web Application Services
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
@@ -213,7 +214,7 @@ const WebAppsDetailModal = ({ isOpen, onClose }) => {
               transition={{ delay: index * 0.2 }}
             >
               <div className="text-4xl mb-4">{detail.icon}</div>
-              <h3 className="text-xl font-semibold text-green-400 mb-3">
+              <h3 className="text-xl font-semibold text-[#177399] mb-3">
                 {detail.title}
               </h3>
               <p className="text-gray-300">
@@ -275,7 +276,7 @@ const MobileAppsDetailModal = ({ isOpen, onClose }) => {
         </button>
 
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-green-400 mb-4">
+          <h2 className="text-3xl font-bold text-[#177399] mb-4">
             Mobile Application Services
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
@@ -293,7 +294,7 @@ const MobileAppsDetailModal = ({ isOpen, onClose }) => {
               transition={{ delay: index * 0.2 }}
             >
               <div className="text-4xl mb-4">{detail.icon}</div>
-              <h3 className="text-xl font-semibold text-green-400 mb-3">
+              <h3 className="text-xl font-semibold text-[#177399] mb-3">
                 {detail.title}
               </h3>
               <p className="text-gray-300">
@@ -355,7 +356,7 @@ const AISolutionsDetailModal = ({ isOpen, onClose }) => {
         </button>
 
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-green-400 mb-4">
+          <h2 className="text-3xl font-bold text-[#177399] mb-4">
             AI Solution Services
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
@@ -373,7 +374,7 @@ const AISolutionsDetailModal = ({ isOpen, onClose }) => {
               transition={{ delay: index * 0.2 }}
             >
               <div className="text-4xl mb-4">{detail.icon}</div>
-              <h3 className="text-xl font-semibold text-green-400 mb-3">
+              <h3 className="text-xl font-semibold text-[#177399] mb-3">
                 {detail.title}
               </h3>
               <p className="text-gray-300">
@@ -467,7 +468,7 @@ const Services = () => {
             className="text-xl text-gray-400 pt-4"
             variants={headingVariants}
           >
-            AI-driven digital acceleration
+            
           </motion.h2>
         </motion.div>
 
@@ -503,7 +504,7 @@ const Services = () => {
               <motion.div 
                 className="mb-6 p-3 inline-block rounded-full"
                 style={{ 
-                  background: hoveredService === index ? service.color : "rgba(0, 194, 255, 0.1)",
+                  background: hoveredService === index ? service.color : "rgba(23, 115, 153, 0.1)",
                   boxShadow: hoveredService === index ? `0 0 15px ${service.color}` : "none",
                   color: "#ffffff"
                 }}
@@ -513,8 +514,8 @@ const Services = () => {
                 <CustomIcon name={service.iconName} />
               </motion.div>
               
-              {/* Service Title - Now in green without ID number */}
-              <h3 className="text-xl font-bold text-green-400 mb-4">
+              {/* Service Title - Now in blue instead of green */}
+              <h3 className="text-xl font-bold text-[#177399] mb-4">
                 {service.title}
               </h3>
               
@@ -525,7 +526,7 @@ const Services = () => {
               <motion.div 
                 className="h-0.5 mt-6 rounded-full"
                 style={{ 
-                  background: `linear-gradient(to right, ${service.color}, rgba(0, 194, 255, 0.3))` 
+                  background: `linear-gradient(to right, ${service.color}, rgba(23, 115, 153, 0.3))` 
                 }}
                 initial={{ width: 0 }}
                 animate={{ 

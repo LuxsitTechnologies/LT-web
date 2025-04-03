@@ -17,7 +17,7 @@ const testimonials = [
     content:
       "Their team provides great design and has a great sense of user experience and aesthetics. They deliver on time and are excellent communicators.",
     rating: 3.5,
-    color: "#00C2FF", // Keeping cyan color from your theme
+    color: "#177399", // Changed to your blue theme color
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ const testimonials = [
     content:
       "Amazing developers with an eye for aesthetics. We had pretty vigorous requests and they hit every single one.",
     rating: 4,
-    color: "#00E0A4", // Green color from your theme
+    color: "#177399", // Changed to your blue theme color
   },
   {
     id: 3,
@@ -49,7 +49,7 @@ const testimonials = [
     content:
       "They exceeded our expectations. Super easy to work with their engineering team, incredibly intelligent, and perceptive.",
     rating: 3.5,
-    color: "#00C2FF", // Changed to cyan to match theme
+    color: "#177399", // Changed to your blue theme color
   },
   {
     id: 4,
@@ -65,7 +65,7 @@ const testimonials = [
     content:
       "Working with them has been great! We've been working together for over 2 years now and the experience is just out of this planet.",
     rating: 5,
-    color: "#00E0A4", // Green color from your theme
+    color: "#177399", // Changed to your blue theme color
   },
   {
     id: 5,
@@ -81,7 +81,7 @@ const testimonials = [
     content:
       "They are clearly the best dev agency I have worked with. The project went smoothly, and we're happy with the outcome!",
     rating: 4.5,
-    color: "#00C2FF", // Keeping cyan color from your theme
+    color: "#177399", // Changed to your blue theme color
   },
   {
     id: 6,
@@ -97,7 +97,7 @@ const testimonials = [
     content:
       "Excellent development services! I recently had the pleasure of working with them on a fintech project, and I am thoroughly impressed.",
     rating: 2.5,
-    color: "#00E0A4", // Green color from your theme
+    color: "#177399", // Changed to your blue theme color
   },
   {
     id: 7,
@@ -113,7 +113,7 @@ const testimonials = [
     content:
       "It doesn't feel like an external team, it feels like we're just working together. One team with one goal. Super happy!",
     rating: 5,
-    color: "#00C2FF", // Changed to cyan to match theme
+    color: "#177399", // Changed to your blue theme color
   },
   {
     id: 8,
@@ -129,7 +129,7 @@ const testimonials = [
     content:
       "They have an incredible remote culture. It really makes working together easy and efficient.",
     rating: 4,
-    color: "#00E0A4", // Green color from your theme
+    color: "#177399", // Changed to your blue theme color
   },
 ];
 
@@ -179,13 +179,14 @@ const Testimonials = () => {
         {[...Array(5)].map((_, i) => (
           <div
             key={i}
-            className="absolute h-px bg-cyan-400" // Changed to cyan to match theme
+            className="absolute h-px bg-blue-400" // Changed to match blue theme
             style={{
               width: `${Math.random() * 30 + 40}%`,
               left: `${Math.random() * 60}%`,
               top: `${i * 20 + Math.random() * 5}%`,
               transform: `rotate(${Math.random() * 5}deg)`,
               opacity: 0.5 + Math.random() * 0.5,
+              backgroundColor: "#177399", // Explicit color setting
             }}
           />
         ))}
@@ -244,7 +245,7 @@ const Testimonials = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.1, duration: 0.3 }}
                 >
-                  <StarRating rating={testimonial.rating} />
+                  <StarRating rating={testimonial.rating} color="#177399" />
                 </motion.div>
 
                 {/* Content */}
@@ -272,7 +273,7 @@ const Testimonials = () => {
                     whileHover={{ scale: 1.1 }}
                   />
                   <div className="text-left">
-                    <div className="font-semibold text-green-400">
+                    <div className="font-semibold" style={{ color: "#177399" }}>
                       {testimonial.author.name}
                     </div>
                     <div className="text-sm text-gray-400">
@@ -291,7 +292,7 @@ const Testimonials = () => {
                 <motion.div
                   className="h-0.5 mt-6 rounded-full"
                   style={{
-                    background: `linear-gradient(to right, ${testimonial.color}, rgba(0, 194, 255, 0.3))`,
+                    background: `linear-gradient(to right, ${testimonial.color}, rgba(23, 115, 153, 0.3))`,
                   }}
                   initial={{ width: 0 }}
                   animate={{
