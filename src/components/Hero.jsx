@@ -368,8 +368,7 @@ function Hero() {
             variants={textVariants}
             custom={1}
           >
-            Luxsit Technologies is a non-conventional dev agency in New York,
-            specializing in creating world-class AI, web, and mobile apps.
+            {EMPOWERED BY INNOVATION}
           </motion.p>
 
           {/* Button Animation - Now opens modal instead of navigating */}
@@ -378,7 +377,6 @@ function Hero() {
               className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 inline-block"
               whileHover="hover"
               variants={buttonVariants}
-              onClick={openModal}
             >
               Got A Project? Let's Talk!
             </motion.button>
@@ -428,9 +426,6 @@ function Hero() {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Contact Form Modal */}
-      <ContactFormModal isOpen={isModalOpen} onClose={closeModal} />
     </motion.div>
   );
 }
