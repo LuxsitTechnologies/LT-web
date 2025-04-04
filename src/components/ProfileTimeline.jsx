@@ -99,7 +99,7 @@ export default function ProfileTimeline() {
                 className="rounded-2xl w-full max-w-sm mx-auto"
               />
               <h3 className="text-2xl md:text-3xl font-bold text-white text-center">
-                LUXSIT TECHNOLOGIES
+                Luxsit Technologies
               </h3>
               <div className="flex items-center gap-2 justify-center">
                 <div className="w-2 h-2 bg-[#177399] rounded-full" />

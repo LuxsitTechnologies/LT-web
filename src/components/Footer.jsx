@@ -97,7 +97,7 @@ const Footer = () => {
               Info@luxsittechnologies.com
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full" style={{ backgroundColor: '#177399' }}></span>
               </span></p>
-              <p>Brøndby Strand 27, 2660, Copenhagen, Denmark</p>
+              <p>24N Commercial, DHA Phase 8 EX Air Avenue, Lahore</p>
               <p>Contact Us <span className="text-blue-500 hover:underline cursor-pointer relative group" style={{ color: '#177399' }}>
               +92 3042160000
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full" style={{ backgroundColor: '#177399' }}></span>
