@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-// Floating SVG Animation with alternating directions and three colors
+// Floating SVG Animation with matching patterns on both sides
 function FloatingPaths({ position }) {
   // Define the three colors from the request
   const colors = ["#545454", "#177399", "#737373"];
@@ -21,19 +21,19 @@ function FloatingPaths({ position }) {
     color: colors[i % 3]
   }));
 
-  // Create the reverse paths (from right to left)
+  // Updated reverse paths to match the same pattern as the left paths
   const reversePaths = Array.from({ length: 36 }, (_, i) => ({
     id: i + 100, // Different ID to avoid conflicts
     d: `M${780 + i * 5 * position} -${189 + i * 6}C${
       780 + i * 5 * position
     } -${189 + i * 6} ${712 + i * 5 * position} ${216 - i * 6} ${
-      248 + i * 5 * position
-    } ${343 - i * 6}C-${216 + i * 5 * position} ${470 - i * 6} -${
-      284 + i * 5 * position
-    } ${875 - i * 6} -${284 + i * 5 * position} ${875 - i * 6}`,
+      452 + i * 5 * position
+    } ${343 - i * 6}C-${16 + i * 5 * position} ${470 - i * 6} -${
+      84 + i * 5 * position
+    } ${875 - i * 6} -${84 + i * 5 * position} ${875 - i * 6}`,
     width: 0.5 + i * 0.03,
-    // Assign one of the three colors in reverse order for contrast
-    color: colors[(2 - i % 3)]
+    // Use the same color pattern as the left side
+    color: colors[i % 3]
   }));
 
   return (
@@ -45,7 +45,7 @@ function FloatingPaths({ position }) {
           <motion.path
             key={path.id}
             d={path.d}
-            stroke={path.color} // Use the assigned color from the array
+            stroke={path.color}
             strokeWidth={path.width}
             strokeOpacity={0.1 + (path.id % 36) * 0.03}
             initial={{ pathLength: 0 }}
@@ -62,25 +62,25 @@ function FloatingPaths({ position }) {
           />
         ))}
         
-        {/* Reverse right-to-left paths with offset timing */}
+        {/* Right-to-left paths with matching animation pattern */}
         {reversePaths.map((path) => (
           <motion.path
             key={path.id}
             d={path.d}
-            stroke={path.color} // Use the assigned color from the array
+            stroke={path.color}
             strokeWidth={path.width}
-            strokeOpacity={0.1 + (path.id % 36) * 0.03}
+            strokeOpacity={0.1 + ((path.id-100) % 36) * 0.03}
             initial={{ pathLength: 0 }}
             animate={{
-              pathLength: [0, 1, 0], // Continuous flow animation
+              pathLength: [0, 1, 0], // Same continuous flow animation
             }}
             transition={{
               duration: 10,
               repeat: Infinity,
               repeatType: "loop",
               ease: "linear",
-              // Offset the animation to start when others are halfway through
-              delay: 5 + (path.id % 4) * 0.15,
+              // Use the same delay pattern as the left side
+              delay: ((path.id-100) % 4) * 0.15,
             }}
           />
         ))}
@@ -221,3 +221,4 @@ function Hero() {
 }
 
 export default Hero;
+

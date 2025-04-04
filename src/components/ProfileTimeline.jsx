@@ -6,7 +6,7 @@ import BookingFormModal from "./BookingFormModal";
 export default function ProfileTimeline() {
   const containerRef = useRef(null);
   const [activeSection, setActiveSection] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Add state for the modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Functions to handle the modal
   const openModal = () => setIsModalOpen(true);
@@ -73,8 +73,8 @@ export default function ProfileTimeline() {
     sections.length > 1 ? (activeSection / (sections.length - 1)) * 100 : 0;
 
   return (
-    <div className="min-h-screen bg-black" ref={containerRef}>
-      <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
+    <div className="min-h-screen bg-black flex items-center justify-center" ref={containerRef}>
+      <div className="max-w-7xl w-full px-4 py-16 md:py-24">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
@@ -84,45 +84,10 @@ export default function ProfileTimeline() {
           </p>
         </div>
 
-        <div className="grid gap-10 md:grid-cols-2 md:gap-20">
-          {/* Profile Section */}
-          <div className="space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
-              Full digital product expertise under one roof
-            </h2>
-            <div className="space-y-6">
-              <img
-                src="src/assets/azk.jpg"
-                alt="Profile"
-                width="400"
-                height="400"
-                className="rounded-2xl w-full max-w-sm mx-auto"
-              />
-              <h3 className="text-2xl md:text-3xl font-bold text-white text-center">
-                Luxsit Technologies
-              </h3>
-              <div className="flex items-center gap-2 justify-center">
-                <div className="w-2 h-2 bg-[#177399] rounded-full" />
-                <p className="text-gray-400 text-sm md:text-base">
-                  Connect with one of our leads today
-                </p>
-              </div>
-              <div className="flex justify-center">
-                <motion.button 
-                  className="flex items-center gap-2 bg-[#177399] text-white px-6 py-3 rounded-full hover:bg-[#146088] transition-colors text-base font-medium"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={openModal} // Added onClick to open the modal
-                >
-                  Book a free call
-                  <ArrowRight className="w-4 h-4" />
-                </motion.button>
-              </div>
-            </div>
-          </div>
-
+        {/* Center the timeline content */}
+        <div className="flex justify-center">
           {/* Timeline Section */}
-          <div className="relative">
+          <div className="relative max-w-md w-full">
             {/* Progress Line Container */}
             <div className="absolute left-5 top-5 md:left-[40px] md:top-[40px] w-0.5 h-[calc(100%-40px)] bg-white/10">
               <motion.div
@@ -147,7 +112,7 @@ export default function ProfileTimeline() {
                   <div className="relative z-10 bg-black border border-white/10 rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
                     {section.icon}
                   </div>
-                  <div className="flex-1 pt-1">
+                  <div className="flex-1 pt-1 text-center">
                     <h3
                       className={`text-xl md:text-2xl font-semibold mb-2 transition-colors duration-300 ${
                         index <= activeSection ? "text-[#177399]" : "text-gray-600"
@@ -164,7 +129,7 @@ export default function ProfileTimeline() {
                     >
                       {section.description}
                     </p>
-                    <div className="h-1 w-16 bg-[#177399]/80 mt-4 rounded-full"></div>
+                    <div className="h-1 w-16 bg-[#177399]/80 mt-4 rounded-full mx-auto"></div>
                   </div>
                 </motion.div>
               ))}
