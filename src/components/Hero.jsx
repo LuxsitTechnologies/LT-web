@@ -2,8 +2,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-// Floating SVG Animation with alternating directions
+// Floating SVG Animation with alternating directions and three colors
 function FloatingPaths({ position }) {
+  // Define the three colors from the request
+  const colors = ["#545454", "#177399", "#737373"];
+  
   const paths = Array.from({ length: 36 }, (_, i) => ({
     id: i,
     d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
@@ -14,6 +17,8 @@ function FloatingPaths({ position }) {
       684 - i * 5 * position
     } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
     width: 0.5 + i * 0.03,
+    // Assign one of the three colors based on the index
+    color: colors[i % 3]
   }));
 
   // Create the reverse paths (from right to left)
@@ -27,6 +32,8 @@ function FloatingPaths({ position }) {
       284 + i * 5 * position
     } ${875 - i * 6} -${284 + i * 5 * position} ${875 - i * 6}`,
     width: 0.5 + i * 0.03,
+    // Assign one of the three colors in reverse order for contrast
+    color: colors[(2 - i % 3)]
   }));
 
   return (
@@ -38,7 +45,7 @@ function FloatingPaths({ position }) {
           <motion.path
             key={path.id}
             d={path.d}
-            stroke="#177399" // Blue color
+            stroke={path.color} // Use the assigned color from the array
             strokeWidth={path.width}
             strokeOpacity={0.1 + (path.id % 36) * 0.03}
             initial={{ pathLength: 0 }}
@@ -60,7 +67,7 @@ function FloatingPaths({ position }) {
           <motion.path
             key={path.id}
             d={path.d}
-            stroke="#177399" // Blue color
+            stroke={path.color} // Use the assigned color from the array
             strokeWidth={path.width}
             strokeOpacity={0.1 + (path.id % 36) * 0.03}
             initial={{ pathLength: 0 }}
@@ -106,11 +113,11 @@ const textVariants = {
   }),
 };
 
-// Button Hover Effect (Glowing Blue)
+// Button Hover Effect (Using the blue color from the scheme)
 const buttonVariants = {
   hover: {
     scale: 1.07,
-    boxShadow: "0px 0px 15px rgba(23, 115, 153, 0.8)", // Blue glow effect
+    boxShadow: "0px 0px 15px rgba(23, 115, 153, 0.8)", // Blue glow effect using #177399
     transition: {
       duration: 0.3,
       yoyo: Infinity,
@@ -141,8 +148,8 @@ function Hero() {
           variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
           className="max-w-4xl mx-auto"
         >
-       {/* Title */}
- <motion.h1
+          {/* Title */}
+          <motion.h1
             className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 tracking-tight"
             variants={textVariants}
             custom={0}
@@ -150,21 +157,21 @@ function Hero() {
             LUXSIT TECHNOLOGIES
           </motion.h1>
 
-{/* Subtitle */}
-<motion.p
-  className="text-2xl sm:text-3xl font-semibold uppercase tracking-wide text-gray-200 mb-4"
-  variants={textVariants}
-  custom={1}
->
-  EMPOWERED BY INNOVATION
-</motion.p>
-<motion.p
-  className="text-lg sm:text-xl font-medium uppercase tracking-wide text-gray-400"
-  variants={textVariants}
-  custom={1}
->
-  REVOLUTIONIZING BUSINESS WITH NEXT-GEN TECH
-</motion.p>
+          {/* Subtitle */}
+          <motion.p
+            className="text-2xl sm:text-3xl font-semibold uppercase tracking-wide text-gray-200 mb-4"
+            variants={textVariants}
+            custom={1}
+          >
+            EMPOWERED BY INNOVATION
+          </motion.p>
+          <motion.p
+            className="text-lg sm:text-xl font-medium uppercase tracking-wide text-gray-400"
+            variants={textVariants}
+            custom={1}
+          >
+            REVOLUTIONIZING BUSINESS WITH NEXT-GEN TECH
+          </motion.p>
          
           <motion.div
             className="mt-12 flex items-center justify-center"
