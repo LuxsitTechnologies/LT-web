@@ -1,9 +1,12 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-// Floating SVG Animation with matching patterns on both sides
+// Floating SVG Animation with synchronized transitions
 function FloatingPaths({ position }) {
+  // State to control which side is currently animating
+  const [animatingSide, setAnimatingSide] = useState("left");
+  
   // Define the three colors from the request
   const colors = ["#545454", "#177399", "#737373"];
   
@@ -36,11 +39,24 @@ function FloatingPaths({ position }) {
     color: colors[i % 3]
   }));
 
+  // Setting up animation timers
+  const animationDuration = 10; // in seconds
+  
+  // Effect to toggle between left and right animations
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setAnimatingSide(prev => prev === "left" ? "right" : "left");
+    }, animationDuration * 1000); // Convert seconds to milliseconds
+    
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="absolute inset-0 pointer-events-none">
       <svg className="w-full h-full" viewBox="0 0 696 316" fill="none">
         <title>Background Paths</title>
-        {/* Original left-to-right paths */}
+        
+        {/* Left-to-right paths */}
         {paths.map((path) => (
           <motion.path
             key={path.id}
@@ -49,20 +65,18 @@ function FloatingPaths({ position }) {
             strokeWidth={path.width}
             strokeOpacity={0.1 + (path.id % 36) * 0.03}
             initial={{ pathLength: 0 }}
-            animate={{
-              pathLength: [0, 1, 0], // Continuous flow animation
+            animate={{ 
+              pathLength: animatingSide === "left" ? [0, 1] : 0 
             }}
             transition={{
-              duration: 10,
-              repeat: Infinity,
-              repeatType: "loop",
+              duration: animationDuration,
               ease: "linear",
               delay: (path.id % 4) * 0.15,
             }}
           />
         ))}
         
-        {/* Right-to-left paths with matching animation pattern */}
+        {/* Right-to-left paths */}
         {reversePaths.map((path) => (
           <motion.path
             key={path.id}
@@ -71,15 +85,12 @@ function FloatingPaths({ position }) {
             strokeWidth={path.width}
             strokeOpacity={0.1 + ((path.id-100) % 36) * 0.03}
             initial={{ pathLength: 0 }}
-            animate={{
-              pathLength: [0, 1, 0], // Same continuous flow animation
+            animate={{ 
+              pathLength: animatingSide === "right" ? [0, 1] : 0 
             }}
             transition={{
-              duration: 10,
-              repeat: Infinity,
-              repeatType: "loop",
+              duration: animationDuration,
               ease: "linear",
-              // Use the same delay pattern as the left side
               delay: ((path.id-100) % 4) * 0.15,
             }}
           />
@@ -221,4 +232,3 @@ function Hero() {
 }
 
 export default Hero;
-
