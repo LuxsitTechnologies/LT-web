@@ -6,9 +6,17 @@ const Footer = () => {
   const [selectedOffice, setSelectedOffice] = useState("PK");
   const [openFaqId, setOpenFaqId] = useState(null);
 
-  const officeAddresses = {
-    PK: "24N Commercial, DHA Phase 8 EX Air Avenue, Lahore",
-    DK: "Brondby Strand 27, 2660, Copenhagen, Denmark",
+  const officeInfo = {
+    PK: {
+      address: "24N Commercial, DHA Phase 8 EX Air Avenue.\nLahore, Pakistan",
+      email: "Info@luxsittechnologies.com",
+      contact: "‪+92 304 216 0000"
+    },
+    DK: {
+      address: "Tranumparken 21, 2th.\n2660 Brøndby Strand.\nCopenhagen, Denmark",
+      email: "Info@luxsittechnologies.com",
+      contact: "‪+45 31 88 28 98"
+    }
   };
 
   const faqs = [
@@ -25,7 +33,7 @@ const Footer = () => {
     {
       id: 3,
       question: "What technologies do you use?",
-      answer: "We work with the latest technologies including React, Angular, Node.js, Java, .NET, Python, and mobile platforms like iOS and Android. Our solutions are built with scalability, security, and performance in mind."
+      answer: "We work with the latest technologies including React, Angular, Node.js, Java, .NET, Php/Laravel, Python, and mobile platforms like iOS and Android. Our solutions are built with scalability, security, and performance in mind."
     },
     {
       id: 4,
@@ -92,8 +100,8 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2 text-gray-400">
               <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Automation</li>
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Web Application</li>
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Mobile Application</li>
+              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Web Applications</li>
+              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Mobile Applications</li>
               <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>AI Solutions</li>
               <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Custom Software</li>
             </ul>
@@ -112,6 +120,8 @@ const Footer = () => {
               <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Python</li>
               <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>.NET</li>
               <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>AI/ML</li>
+              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Php/Laravel</li>
+
             </ul>
           </div>
           
@@ -139,7 +149,7 @@ const Footer = () => {
             <h2 className="text-lg text-white mb-2">
               Offices — {" "}
               <span className="text-gray-400">
-                {Object.keys(officeAddresses).map((office, index) => (
+                {Object.keys(officeInfo).map((office, index) => (
                   <React.Fragment key={office}>
                     <span 
                       className={`cursor-pointer transition-colors duration-300 ${selectedOffice === office ? 'text-blue-500' : 'text-gray-400 hover:text-blue-400'}`}
@@ -148,26 +158,34 @@ const Footer = () => {
                     >
                       {office}
                     </span>
-                    {index < Object.keys(officeAddresses).length - 1 && " "}
+                    {index < Object.keys(officeInfo).length - 1 && " "}
                   </React.Fragment>
                 ))}
               </span>
             </h2>
-            <div className="space-y-2 text-gray-400 mt-2">
-              <p>Got a question?</p>
-              <p>Email us at <span className="text-blue-500 hover:underline cursor-pointer relative group" style={{ color: '#177399' }}>
-              Info@luxsittechnologies.com
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full" style={{ backgroundColor: '#177399' }}></span>
-              </span></p>
+            <div className="space-y-2 text-gray-400 mt-4">
+              <p>
+                <span className="block">Email Us: <span className="text-blue-500 hover:underline cursor-pointer relative group" style={{ color: '#177399' }}>
+                  {officeInfo[selectedOffice].email}
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full" style={{ backgroundColor: '#177399' }}></span>
+                </span></span>
+              </p>
               
               <div className="min-h-12 transition-all duration-300">
-                <p>{officeAddresses[selectedOffice]}</p>
+                <p><span className="block">Office: {officeInfo[selectedOffice].address.split('\n').map((line, i) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    {i < officeInfo[selectedOffice].address.split('\n').length - 1 && <br />}
+                  </React.Fragment>
+                ))}</span></p>
               </div>
               
-              <p>Contact Us <span className="text-blue-500 hover:underline cursor-pointer relative group" style={{ color: '#177399' }}>
-              +92 3042160000
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full" style={{ backgroundColor: '#177399' }}></span>
-              </span></p>
+              <p>
+                <span className="block">Contact No: <span className="text-blue-500 hover:underline cursor-pointer relative group" style={{ color: '#177399' }}>
+                  {officeInfo[selectedOffice].contact}
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full" style={{ backgroundColor: '#177399' }}></span>
+                </span></span>
+              </p>
             </div>
           </div>
           
@@ -209,7 +227,7 @@ const Footer = () => {
         
         {/* Footer Bottom - Copyright & Social Links */}
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm animate-on-scroll opacity-0 transform translate-y-4" style={{ transitionDelay: '900ms' }}>© 2025 LUXSIT TECHNOLOGIES. All rights reserved.</p>
+          <p className="text-gray-400 text-sm animate-on-scroll opacity-0 transform translate-y-4" style={{ transitionDelay: '900ms' }}>© 2025 Luxsit Technologies. All Rights Reserved.</p>
           
           {/* Social Links */}
           <div className="flex gap-6 text-gray-400 text-xl mt-4 md:mt-0 animate-on-scroll opacity-0 transform translate-y-4" style={{ transitionDelay: '1000ms' }}>

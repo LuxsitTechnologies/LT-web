@@ -1,42 +1,80 @@
 import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import PropTypes from "prop-types";
 
+// Updated data structure - removed gif properties and added related images
 const sliderData = [
   [
     {
       color: "#e3e5e7",
-      src: "https://blog.appseed.us/content/images/size/w2000/2021/11/django-material-kit-hero-1.jpg",
-      gif: "https://blog.appseed.us/content/images/2021/11/ct-material-kit2-intro.gif",
-      gifThumb: "c2-thumb.jpg",
+      src: "src/assets/Project gifs/claimcore/project1img.png",
+      title: "Claim Core",
+      description: "The Claim Core Project is a centralized system that retrieves claim data via APIs and streamlines the entire claim lifecycle with validation workflows, role-based access, and real-time tracking.",
+      relatedImages: [
+        "src/assets/Project gifs/claimcore/2.png",
+        "src/assets/Project gifs/claimcore/3.png",
+        "src/assets/Project gifs/claimcore/4.png"
+      ],
+      link: "#",
+    },
+    {
+      color: "#f2f2f2",
+      src: "src/assets/Project gifs/GETXM/1.png",
+      title: "GetXM – AI-Powered Customer Support",
+      description: "GetXM is an intelligent chatbot solution that delivers instant, consistent, and on-brand responses. It automates customer support to boost satisfaction, save time, and let your team focus on what matters most.",
+      relatedImages: [
+        "src/assets/Project gifs/GETXM/2.png",
+        "src/assets/Project gifs/GETXM/3.png",
+        "src/assets/Project gifs/GETXM/4.png"
+      ],
+      link: "#",
+    },
+    {
+      color: "#e5e5e5",
+      src: "src/assets/Project gifs/pixel Tech/1.png",
+      title: "Pixel Tech",
+      description: "Pixel Tech is a creative 3D animation studio that transforms ideas into stunning, high-quality visuals. From dynamic storytelling to immersive effects, we bring your vision to life with precision and artistry.",
+      relatedImages: [
+        "src/assets/Project gifs/pixel Tech/2.png",
+        "src/assets/Project gifs/pixel Tech/3.png",
+        "src/assets/Project gifs/pixel Tech/4.png"
+      ],
       link: "#",
     },
     {
       color: "#e3e5e7",
-      src: "https://blog.appseed.us/content/images/size/w2000/2021/11/django-material-kit-hero-1.jpg",
-      gif: "https://blog.appseed.us/content/images/2021/11/ct-material-kit2-intro.gif",
-      gifThumb: "c2-thumb.jpg",
+      src: "src/assets/Project gifs/medoptics/1.png",
+      title: "MedOptics",
+      description: "MedOptics is committed to enhancing lives through innovative optical solutions. We design advanced, personalized eyewear and vision care products tailored to meet the unique needs of every individual, ensuring clarity, comfort, and confidence.",
+      relatedImages: [
+        "src/assets/Project gifs/medoptics/2.png",
+        "src/assets/Project gifs/medoptics/3.png",
+        "src/assets/Project gifs/medoptics/4.png"
+      ],
       link: "#",
     },
     {
-      color: "#e3e5e7",
-      src: "https://blog.appseed.us/content/images/size/w2000/2021/11/django-material-kit-hero-1.jpg",
-      gif: "https://blog.appseed.us/content/images/2021/11/ct-material-kit2-intro.gif",
-      gifThumb: "c2-thumb.jpg",
+      color: "#f5f5f5",
+      src: "src/assets/Project gifs/tinytots/1.png",
+      title: "TinyLilTots",
+      description: "TinyLilTots as a vibrant and user-friendly online store for a kids' clothing brand. The website features a playful yet clean design, smooth navigation, and a seamless shopping experience tailored for parents looking for adorable and high-quality outfits for their little ones. Every detail—from color choices to layout—was crafted to reflect the charm and warmth of the brand.",
+      relatedImages: [
+        "src/assets/Project gifs/tinytots/2.png",
+        "src/assets/Project gifs/tinytots/3.png",
+        "src/assets/Project gifs/tinytots/4.png"
+      ],
       link: "#",
     },
     {
-      color: "#e3e5e7",
-      src: "https://blog.appseed.us/content/images/size/w2000/2021/11/django-material-kit-hero-1.jpg",
-      gif: "https://blog.appseed.us/content/images/2021/11/ct-material-kit2-intro.gif",
-      gifThumb: "c2-thumb.jpg",
-      link: "#",
-    },
-    {
-      color: "#e3e5e7",
-      src: "https://blog.appseed.us/content/images/size/w2000/2021/11/django-material-kit-hero-1.jpg",
-      gif: "https://blog.appseed.us/content/images/2021/11/ct-material-kit2-intro.gif",
-      gifThumb: "c2-thumb.jpg",
+      color: "#f5f5f5",
+      src: "src/assets/Project gifs/nordicxpress/1.png",
+      title: "Nordic Xpress",
+      description: " Nordic Xpress website to deliver a seamless, modern, and informative experience for a premium transportation service. The site highlights key offerings like airport transfers, cruise port transfers, business travel, leisure travel, and private tours—each presented with intuitive icons and clear, engaging descriptions. Designed for both functionality and elegance, the website ensures users can easily find and book the services they need with confidence and ease.",
+      relatedImages: [
+        "src/assets/Project gifs/nordicxpress/2.png",
+        "src/assets/Project gifs/nordicxpress/3.png",
+        "src/assets/Project gifs/nordicxpress/4.png"
+      ],
       link: "#",
     },
   ],
@@ -66,7 +104,6 @@ function Portfolio() {
         Featured Projects
       </motion.h2>
       <motion.p className="mb-20 text-center text-xl text-white">
-        Check out our projects, each of them equally aced.
       </motion.p>
 
       {sliderData.map((slider, index) => (
@@ -83,13 +120,9 @@ function Portfolio() {
 function Slider({ projects, reverse, onProjectClick }) {
   const sliderRef = useRef(null);
   const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: sliderRef });
   const isInView = useInView(sliderRef, { once: true });
   const [scrollPosition, setScrollPosition] = useState(0);
   const [maxScroll, setMaxScroll] = useState(0);
-
-  const x = useTransform(scrollYProgress, [0, 1], reverse ? [150, -150] : [-150, 150]);
-  const xSpring = useSpring(x, { stiffness: 50, damping: 15 });
 
   useEffect(() => {
     if (containerRef.current) {
@@ -175,8 +208,9 @@ Slider.propTypes = {
     PropTypes.shape({
       color: PropTypes.string.isRequired,
       src: PropTypes.string.isRequired,
-      gif: PropTypes.string.isRequired,
-      gifThumb: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      relatedImages: PropTypes.arrayOf(PropTypes.string).isRequired,
       link: PropTypes.string.isRequired,
     })
   ).isRequired,
@@ -202,12 +236,28 @@ function ProjectCard({ project, onClick }) {
       onClick={onClick}
     >
       <motion.img
-        src={isHovered ? project.gif : project.src}
-        alt="Project"
+        src={project.src}
+        alt={project.title}
         className="h-full w-full object-cover"
-        animate={{ scale: isHovered ? 1.1 : 1 }}
+        animate={{ scale: isHovered ? 0.9 : 1 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       />
+      
+      {/* Always visible title bar at the bottom */}
+      <div className="absolute bottom-0 left-0 right-0 bg-[#737373] bg-opacity-60 text-white p-2">
+        <h3 className="text-lg font-bold truncate">{project.title}</h3>
+      </div>
+      
+      {/* Full overlay that appears on hover */}
+      <motion.div 
+        className="absolute bottom-0 left-0 right-0 bg-[#737373] text-white p-4"
+        initial={{ y: "100%" }}
+        animate={{ y: isHovered ? 0 : "100%" }}
+        transition={{ duration: 0.3 }}
+      >
+        <h3 className="text-lg font-bold">{project.title}</h3>
+        <p className="text-sm">{project.description}</p>
+      </motion.div>
     </motion.div>
   );
 }
@@ -216,14 +266,26 @@ ProjectCard.propTypes = {
   project: PropTypes.shape({
     color: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
-    gif: PropTypes.string.isRequired,
-    gifThumb: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    relatedImages: PropTypes.arrayOf(PropTypes.string).isRequired,
     link: PropTypes.string.isRequired,
   }).isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
 function ProjectModal({ project, onClose }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [project.src, ...project.relatedImages];
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
   return (
     <motion.div
       id="modal-overlay"
@@ -233,19 +295,67 @@ function ProjectModal({ project, onClose }) {
       exit={{ opacity: 0 }}
     >
       <motion.div
-        className="relative bg-white p-4 rounded-lg shadow-lg w-[40vw] max-w-md"
+        className="relative bg-[#737373] p-4 rounded-lg shadow-lg w-[80vw] max-w-4xl text-white"
         initial={{ scale: 0.7, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
-        <button className="absolute top-2 right-2 bg-gray-200 hover:bg-gray-300 text-black px-3 py-1 rounded-full" onClick={onClose}>
+        <button className="absolute top-4 right-2 bg-black hover:bg-gray-800 text-white px-3 py-1 rounded-full z-10" onClick={onClose}>
           ✕
         </button>
-        <img src={project.gif} alt="Expanded Project" className="w-full rounded-md shadow-md" />
-        <div className="mt-4 flex justify-center">
-          <a href={project.link} target="_blank" rel="noopener noreferrer" className="bg-black text-white px-4 py-2 rounded">
-            Visit Project
-          </a>
+        
+        <div className="flex flex-col md:flex-row gap-6">
+          {/* Main image and gallery */}
+          <div className="relative w-full md:w-2/3">
+            <div className="relative aspect-video">
+              <motion.img 
+                src={images[currentImageIndex]} 
+                alt={`Project image ${currentImageIndex + 1}`} 
+                className="w-full h-full object-cover rounded-md shadow-md"
+                key={currentImageIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              />
+              
+              {/* Image navigation buttons */}
+              <button 
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-70 hover:bg-opacity-100 rounded-full p-2 shadow-md text-white"
+                onClick={prevImage}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              <button 
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-70 hover:bg-opacity-100 rounded-full p-2 shadow-md text-white"
+                onClick={nextImage}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+            
+            {/* Thumbnails */}
+            <div className="flex gap-2 mt-4 flex-wrap">
+              {images.map((img, idx) => (
+                <div 
+                  key={idx} 
+                  className={`w-16 h-16 cursor-pointer rounded overflow-hidden border-2 ${currentImageIndex === idx ? 'border-white' : 'border-transparent'}`}
+                  onClick={() => setCurrentImageIndex(idx)}
+                >
+                  <img src={img} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Project details */}
+          <div className="w-full md:w-1/3">
+            <h2 className="text-2xl font-bold mb-4">{project.title}</h2>
+            <p className="mb-6">{project.description}</p>
+          </div>
         </div>
       </motion.div>
     </motion.div>
@@ -254,13 +364,15 @@ function ProjectModal({ project, onClose }) {
 
 ProjectModal.propTypes = {
   project: PropTypes.shape({
-    gif: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    relatedImages: PropTypes.arrayOf(PropTypes.string).isRequired,
     link: PropTypes.string.isRequired,
   }).isRequired,
   onClose: PropTypes.func.isRequired,
 };
 
-// Add this to your CSS or as a style tag to hide scrollbars
 const scrollbarHideStyles = `
   .scrollbar-hide::-webkit-scrollbar {
     display: none;

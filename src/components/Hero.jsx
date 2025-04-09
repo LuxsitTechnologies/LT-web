@@ -189,41 +189,8 @@ function Hero() {
             variants={textVariants}
             custom={3}
           >
-            <div className="flex -space-x-4">
-              {[1, 2, 3].map((i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ scale: 1.1, zIndex: 10 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <img
-                    src={`/dummy-client.jpg`}
-                    alt={`Client ${i}`}
-                    width="48"
-                    height="48"
-                    className="rounded-full border-2 border-white"
-                  />
-                </motion.div>
-              ))}
-            </div>
-            <div className="ml-4 text-left">
-              <motion.p
-                className="font-semibold"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5 }}
-              >
-                200+ successful clients.
-              </motion.p>
-              <motion.a
-                href="#testimonials"
-                className="text-[#177399] hover:text-[#155b75] hover:underline inline-block font-semibold"
-                whileHover={{ x: 5 }}
-                transition={{ type: "spring", stiffness: 400 }}
-              >
-                Read testimonials →
-              </motion.a>
-            </div>
+           
+           
           </motion.div>
         </motion.div>
       </div>

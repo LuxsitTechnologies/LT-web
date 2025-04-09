@@ -24,11 +24,11 @@ const BookingFormModal = ({ isOpen, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would normally handle form submission to your backend
+    
     console.log("Booking form submitted:", formData);
     setSubmitted(true);
     
-    // Reset form after submission
+    
     setTimeout(() => {
       setFormData({
         name: "",

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import StarRating from "./StarRating";
 
@@ -6,131 +6,63 @@ const testimonials = [
   {
     id: 1,
     author: {
-      name: "Sarah Mitchell",
-      title: "Founder, TechCorp",
+      name: "Asem Raza",
+      title: "Getxm",
       image: "dummy-client.jpg",
     },
-    company: {
-      name: "TechCorp",
-      logo: "tech-corp-logo1.webp",
-    },
     content:
-      "Their team provides great design and has a great sense of user experience and aesthetics. They deliver on time and are excellent communicators.",
-    rating: 3.5,
-    color: "#177399", // Changed to your blue theme color
+      "Working with Luxsit Technologies has been a fantastic experience. Their team is highly professional, responsive, and truly understands the technical side of building scalable software. From planning to execution, everything was handled with care and attention to detail. We partnered with them for a custom development project at Getxm, and they delivered beyond expectations. Highly recommended for anyone looking for a reliable and skilled tech partner.",
+    rating: 5,
+    color: "#177399",
   },
   {
     id: 2,
     author: {
-      name: "Michael Chen",
-      title: "Co-founder, InnovateLabs",
+      name: "Tanveer",
+      title: "Jetclean",
       image: "dummy-client.jpg",
     },
-    company: {
-      name: "InnovateLabs",
-      logo: "tech-corp-logo1.webp",
-    },
     content:
-      "Amazing developers with an eye for aesthetics. We had pretty vigorous requests and they hit every single one.",
-    rating: 4,
-    color: "#177399", // Changed to your blue theme color
+      "Luxsit Technologies has been a dependable partner for us at Jetclean. Their team delivered a solid software solution tailored to our business needs with great attention to detail and professionalism. Communication was smooth throughout, and they were always quick to respond and adapt to our feedback. We're very satisfied with the results and look forward to working with them again.",
+    rating: 4.5,
+    color: "#177399",
   },
   {
     id: 3,
     author: {
-      name: "Emma Thompson",
-      title: "Medical Director, HealthTech",
+      name: "Hassan",
+      title: "Pixel Tech",
       image: "dummy-client.jpg",
     },
-    company: {
-      name: "HealthTech",
-      logo: "tech-corp-logo1.webp",
-    },
     content:
-      "They exceeded our expectations. Super easy to work with their engineering team, incredibly intelligent, and perceptive.",
-    rating: 3.5,
-    color: "#177399", // Changed to your blue theme color
+      "Luxsit Technologies did a fantastic job developing our website at Pixel Tech. The entire process was smooth—from design implementation to final deployment. The team was responsive, detail-oriented, and delivered exactly what we envisioned. We're extremely happy with the outcome and would definitely recommend them for any web development needs.",
+    rating: 5,
+    color: "#177399",
   },
   {
     id: 4,
     author: {
-      name: "David Wilson",
-      title: "Co-founder, CloudSys",
+      name: "Jibran",
+      title: "NXL",
       image: "dummy-client.jpg",
     },
-    company: {
-      name: "CloudSys",
-      logo: "tech-corp-logo1.webp",
-    },
     content:
-      "Working with them has been great! We've been working together for over 2 years now and the experience is just out of this planet.",
+      "Luxsit Technologies has been instrumental in the growth and success of our platform at NXL. Their ability to quickly understand our requirements, suggest smart solutions, and deliver high-quality results on time truly sets them apart. The team handled both development and ongoing support seamlessly. I've worked with many tech providers, but Luxsit stands out for their professionalism and dedication.",
     rating: 5,
-    color: "#177399", // Changed to your blue theme color
+    color: "#177399",
   },
   {
     id: 5,
     author: {
-      name: "Rachel Adams",
-      title: "Managing Director, DataFlow",
+      name: "Afaq",
+      title: "Travel Tales and Tourism",
       image: "dummy-client.jpg",
     },
-    company: {
-      name: "DataFlow",
-      logo: "tech-corp-logo1.webp",
-    },
     content:
-      "They are clearly the best dev agency I have worked with. The project went smoothly, and we're happy with the outcome!",
+      "Luxsit Technologies did an outstanding job developing our website for Travel Tales and Tourism. They captured our brand perfectly and delivered a clean, functional, and visually appealing site. The team was professional, responsive, and easy to work with throughout the entire process. We're very pleased with the results and highly recommend them for any web development project.",
     rating: 4.5,
-    color: "#177399", // Changed to your blue theme color
-  },
-  {
-    id: 6,
-    author: {
-      name: "James Lee",
-      title: "Co-Founder, TechVision",
-      image: "dummy-client.jpg",
-    },
-    company: {
-      name: "TechVision",
-      logo: "tech-corp-logo1.webp",
-    },
-    content:
-      "Excellent development services! I recently had the pleasure of working with them on a fintech project, and I am thoroughly impressed.",
-    rating: 2.5,
-    color: "#177399", // Changed to your blue theme color
-  },
-  {
-    id: 7,
-    author: {
-      name: "Anna Martinez",
-      title: "Principal Product Designer",
-      image: "dummy-client.jpg",
-    },
-    company: {
-      name: "DesignCo",
-      logo: "tech-corp-logo1.webp",
-    },
-    content:
-      "It doesn't feel like an external team, it feels like we're just working together. One team with one goal. Super happy!",
-    rating: 5,
-    color: "#177399", // Changed to your blue theme color
-  },
-  {
-    id: 8,
-    author: {
-      name: "Robert Kim",
-      title: "Founder, WebAgency",
-      image: "dummy-client.jpg",
-    },
-    company: {
-      name: "WebAgency",
-      logo: "tech-corp-logo1.webp",
-    },
-    content:
-      "They have an incredible remote culture. It really makes working together easy and efficient.",
-    rating: 4,
-    color: "#177399", // Changed to your blue theme color
-  },
+    color: "#177399",
+  }
 ];
 
 const Testimonials = () => {
@@ -179,14 +111,14 @@ const Testimonials = () => {
         {[...Array(5)].map((_, i) => (
           <div
             key={i}
-            className="absolute h-px bg-blue-400" // Changed to match blue theme
+            className="absolute h-px bg-blue-400"
             style={{
               width: `${Math.random() * 30 + 40}%`,
               left: `${Math.random() * 60}%`,
               top: `${i * 20 + Math.random() * 5}%`,
               transform: `rotate(${Math.random() * 5}deg)`,
               opacity: 0.5 + Math.random() * 0.5,
-              backgroundColor: "#177399", // Explicit color setting
+              backgroundColor: "#177399",
             }}
           />
         ))}
@@ -280,12 +212,6 @@ const Testimonials = () => {
                       {testimonial.author.title}
                     </div>
                   </div>
-                  <motion.img
-                    src={testimonial.company.logo || "/placeholder.svg"}
-                    alt={testimonial.company.name}
-                    className="ml-auto h-8"
-                    whileHover={{ scale: 1.05 }}
-                  />
                 </motion.div>
 
                 {/* Animated underline */}
