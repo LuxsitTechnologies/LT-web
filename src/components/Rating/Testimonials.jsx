@@ -8,7 +8,7 @@ const testimonials = [
     author: {
       name: "Asem Raza",
       title: "Getxm",
-      image: "dummy-client.jpg",
+      image: "src/assets/Company copy/testimonial/getxm.jpg",
     },
     content:
       "Working with Luxsit Technologies has been a fantastic experience. Their team is highly professional, responsive, and truly understands the technical side of building scalable software. From planning to execution, everything was handled with care and attention to detail. We partnered with them for a custom development project at Getxm, and they delivered beyond expectations. Highly recommended for anyone looking for a reliable and skilled tech partner.",
@@ -20,7 +20,7 @@ const testimonials = [
     author: {
       name: "Tanveer",
       title: "Jetclean",
-      image: "dummy-client.jpg",
+      image: "src/assets/Company copy/testimonial/jet clean.jpg",
     },
     content:
       "Luxsit Technologies has been a dependable partner for us at Jetclean. Their team delivered a solid software solution tailored to our business needs with great attention to detail and professionalism. Communication was smooth throughout, and they were always quick to respond and adapt to our feedback. We're very satisfied with the results and look forward to working with them again.",
@@ -32,7 +32,7 @@ const testimonials = [
     author: {
       name: "Hassan",
       title: "Pixel Tech",
-      image: "dummy-client.jpg",
+      image: "src/assets/Company copy/testimonial/jet clean.jpg",
     },
     content:
       "Luxsit Technologies did a fantastic job developing our website at Pixel Tech. The entire process was smooth—from design implementation to final deployment. The team was responsive, detail-oriented, and delivered exactly what we envisioned. We're extremely happy with the outcome and would definitely recommend them for any web development needs.",
@@ -44,7 +44,7 @@ const testimonials = [
     author: {
       name: "Jibran",
       title: "NXL",
-      image: "dummy-client.jpg",
+      image: "src/assets/Company copy/testimonial/nordicxpress.jpg",
     },
     content:
       "Luxsit Technologies has been instrumental in the growth and success of our platform at NXL. Their ability to quickly understand our requirements, suggest smart solutions, and deliver high-quality results on time truly sets them apart. The team handled both development and ongoing support seamlessly. I've worked with many tech providers, but Luxsit stands out for their professionalism and dedication.",
@@ -56,7 +56,7 @@ const testimonials = [
     author: {
       name: "Afaq",
       title: "Travel Tales and Tourism",
-      image: "dummy-client.jpg",
+      image: "src/assets/Company copy/testimonial/nordicxpress.jpg",
     },
     content:
       "Luxsit Technologies did an outstanding job developing our website for Travel Tales and Tourism. They captured our brand perfectly and delivered a clean, functional, and visually appealing site. The team was professional, responsive, and easy to work with throughout the entire process. We're very pleased with the results and highly recommend them for any web development project.",
