@@ -8,56 +8,56 @@ const Company = () => {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 items-center pt-6">
           <div className="flex items-center justify-center">
             <img
-              src="src/assets/Company/claimcore-logo-revamp.png"
+              src="/Company/claimcore-logo-revamp.png"
               alt="ClaimCore Logo"
               className="object-contain h-14 md:h-20 transition-transform duration-300 hover:scale-110 cursor-pointer"
             />
           </div>
           <div className="flex items-center justify-center">
             <img
-              src="src/assets/Company/dobi.png"
+              src="/Company/dobi.png"
               alt="Dobi Logo"
               className="object-contain h-14 md:h-20 transition-transform duration-300 hover:scale-110 cursor-pointer"
             />
           </div>
           <div className="flex items-center justify-center">
             <img
-              src="src/assets/Company/jetclean.png"
+              src="/Company/jetclean.png"
               alt="JetClean Logo"
               className="object-contain h-14 md:h-20 transition-transform duration-300 hover:scale-110 cursor-pointer"
             />
           </div>
           <div className="flex items-center justify-center">
             <img
-              src="src/assets/Company/manqoosh.png"
+              src="/Company/manqoosh.png"
               alt="Manqoosh Logo"
               className="object-contain h-14 md:h-20 transition-transform duration-300 hover:scale-110 cursor-pointer"
             />
           </div>
           <div className="flex items-center justify-center">
             <img
-              src="src/assets/Company/risros.png"
+              src="/Company/risros.png"
               alt="Risros Logo"
               className="object-contain h-14 md:h-20 transition-transform duration-300 hover:scale-110 cursor-pointer"
             />
           </div>
           <div className="flex items-center justify-center">
             <img
-              src="src/assets/Company/nordic-logo.webp"
+              src="/Company/nordic-logo.webp"
               alt="Nordic Logo"
               className="object-contain h-14 md:h-20 transition-transform duration-300 hover:scale-110 cursor-pointer"
             />
           </div>
           <div className="flex items-center justify-center">
             <img
-              src="src/assets/Company/get xm.png"
+              src="/Company/get xm.png"
               alt="GET XM"
               className="object-contain h-14 md:h-20 transition-transform duration-300 hover:scale-110 cursor-pointer"
             />
           </div>
           <div className="flex items-center justify-center">
             <img
-              src="src/assets/Company/logo.png"
+              src="/Company/logo.png"
               alt="Pixel Tech "
               className="object-contain h-14 md:h-20 transition-transform duration-300 hover:scale-110 cursor-pointer"
             />

@@ -7,73 +7,73 @@ const sliderData = [
   [
     {
       color: "#e3e5e7",
-      src: "src/assets/Project gifs/claimcore/project1img.png",
+      src: "/claimcore/project1img.png",
       title: "Claim Core",
       description: "The Claim Core Project is a centralized system that retrieves claim data via APIs and streamlines the entire claim lifecycle with validation workflows, role-based access, and real-time tracking.",
       relatedImages: [
-        "src/assets/Project gifs/claimcore/2.png",
-        "src/assets/Project gifs/claimcore/3.png",
-        "src/assets/Project gifs/claimcore/4.png"
+        "/claimcore/2.png",
+        "/claimcore/3.png",
+        "/claimcore/4.png"
       ],
       link: "#",
     },
     {
       color: "#f2f2f2",
-      src: "src/assets/Project gifs/GETXM/1.png",
+      src: "/GETXM/1.png",
       title: "GetXM – AI-Powered Customer Support",
       description: "GetXM is an intelligent chatbot solution that delivers instant, consistent, and on-brand responses. It automates customer support to boost satisfaction, save time, and let your team focus on what matters most.",
       relatedImages: [
-        "src/assets/Project gifs/GETXM/2.png",
-        "src/assets/Project gifs/GETXM/3.png",
-        "src/assets/Project gifs/GETXM/4.png"
+        "/GETXM/2.png",
+        "/GETXM/3.png",
+        "/GETXM/4.png"
       ],
       link: "#",
     },
     {
       color: "#e5e5e5",
-      src: "src/assets/Project gifs/pixel Tech/1.png",
+      src: "/pixel Tech/1.png",
       title: "Pixel Tech",
       description: "Pixel Tech is a creative 3D animation studio that transforms ideas into stunning, high-quality visuals. From dynamic storytelling to immersive effects, we bring your vision to life with precision and artistry.",
       relatedImages: [
-        "src/assets/Project gifs/pixel Tech/2.png",
-        "src/assets/Project gifs/pixel Tech/3.png",
-        "src/assets/Project gifs/pixel Tech/4.png"
+        "/pixel Tech/2.png",
+        "/pixel Tech/3.png",
+        "/pixel Tech/4.png"
       ],
       link: "#",
     },
     {
       color: "#e3e5e7",
-      src: "src/assets/Project gifs/medoptics/1.png",
+      src: "/medoptics/1.png",
       title: "MedOptics",
       description: "MedOptics is committed to enhancing lives through innovative optical solutions. We design advanced, personalized eyewear and vision care products tailored to meet the unique needs of every individual, ensuring clarity, comfort, and confidence.",
       relatedImages: [
-        "src/assets/Project gifs/medoptics/2.png",
-        "src/assets/Project gifs/medoptics/3.png",
-        "src/assets/Project gifs/medoptics/4.png"
+        "/medoptics/2.png",
+        "/medoptics/3.png",
+        "/medoptics/4.png"
       ],
       link: "#",
     },
     {
       color: "#f5f5f5",
-      src: "src/assets/Project gifs/tinytots/1.png",
+      src: "/tinytots/1.png",
       title: "TinyLilTots",
       description: "TinyLilTots as a vibrant and user-friendly online store for a kids' clothing brand. The website features a playful yet clean design, smooth navigation, and a seamless shopping experience tailored for parents looking for adorable and high-quality outfits for their little ones. Every detail—from color choices to layout—was crafted to reflect the charm and warmth of the brand.",
       relatedImages: [
-        "src/assets/Project gifs/tinytots/2.png",
-        "src/assets/Project gifs/tinytots/3.png",
-        "src/assets/Project gifs/tinytots/4.png"
+        "/tinytots/2.png",
+        "/tinytots/3.png",
+        "/tinytots/4.png"
       ],
       link: "#",
     },
     {
       color: "#f5f5f5",
-      src: "src/assets/Project gifs/nordicxpress/1.png",
+      src: "/nordicxpress/1.png",
       title: "Nordic Xpress",
       description: " Nordic Xpress website to deliver a seamless, modern, and informative experience for a premium transportation service. The site highlights key offerings like airport transfers, cruise port transfers, business travel, leisure travel, and private tours—each presented with intuitive icons and clear, engaging descriptions. Designed for both functionality and elegance, the website ensures users can easily find and book the services they need with confidence and ease.",
       relatedImages: [
-        "src/assets/Project gifs/nordicxpress/2.png",
-        "src/assets/Project gifs/nordicxpress/3.png",
-        "src/assets/Project gifs/nordicxpress/4.png"
+        "/nordicxpress/2.png",
+        "/nordicxpress/3.png",
+        "/nordicxpress/4.png"
       ],
       link: "#",
     },
