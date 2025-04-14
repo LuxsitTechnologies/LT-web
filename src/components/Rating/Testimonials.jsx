@@ -11,55 +11,55 @@ const testimonials = [
       image: "/getxm.jpg",
     },
     content:
-      "Working with Luxsit Technologies has been a fantastic experience. Their team is highly professional, responsive, and truly understands the technical side of building scalable software. From planning to execution, everything was handled with care and attention to detail. We partnered with them for a custom development project at Getxm, and they delivered beyond expectations. Highly recommended for anyone looking for a reliable and skilled tech partner.",
+      "Working with Luxsit Technologies was a great experience. Their team is professional, responsive, and technically strong. They helped us with a custom development project at Getxm and delivered quality results on time. Highly recommended for reliable tech solutions.",
     rating: 5,
     color: "#177399",
   },
   {
     id: 2,
     author: {
-      name: "Tanveer",
+      name: "Tanveer Shareef",
       title: "Jetclean",
       image: "/jet clean.jpg",
     },
     content:
-      "Luxsit Technologies has been a dependable partner for us at Jetclean. Their team delivered a solid software solution tailored to our business needs with great attention to detail and professionalism. Communication was smooth throughout, and they were always quick to respond and adapt to our feedback. We're very satisfied with the results and look forward to working with them again.",
+      "Luxsit Technologies has been a reliable tech partner for Jetclean. They built a software solution that fits our business needs well. The team was responsive, easy to work with, and open to feedback. Overall, we’re happy with the outcome and would consider working with them again in the future.",
     rating: 4.5,
     color: "#177399",
   },
   {
     id: 3,
     author: {
-      name: "Hassan",
+      name: "Hassan Raza",
       title: "Pixel Tech",
-      image: "/jet clean.jpg",
+      image: "/jetclean.png",
     },
     content:
-      "Luxsit Technologies did a fantastic job developing our website at Pixel Tech. The entire process was smooth—from design implementation to final deployment. The team was responsive, detail-oriented, and delivered exactly what we envisioned. We're extremely happy with the outcome and would definitely recommend them for any web development needs.",
+      "We worked with Luxsit Technologies on our website at Pixel Tech, and the experience was smooth overall. They handled both the design and development professionally and were open to our input throughout the process. There were a few adjustments along the way, but the team stayed responsive and made sure we got the result we wanted. We’re satisfied with the final site and appreciate their effort.",
     rating: 5,
     color: "#177399",
   },
   {
     id: 4,
     author: {
-      name: "Jibran",
+      name: "Jibran Akmal",
       title: "NXL",
       image: "/nordicxpress.jpg",
     },
     content:
-      "Luxsit Technologies has been instrumental in the growth and success of our platform at NXL. Their ability to quickly understand our requirements, suggest smart solutions, and deliver high-quality results on time truly sets them apart. The team handled both development and ongoing support seamlessly. I've worked with many tech providers, but Luxsit stands out for their professionalism and dedication.",
+      "Luxsit Technologies played a key role in helping us build and grow our platform at NXL. They understood our needs quickly and delivered solid results on time. Their team has been professional, responsive, and easy to work with throughout the process.",
     rating: 5,
     color: "#177399",
   },
   {
     id: 5,
     author: {
-      name: "Afaq",
+      name: "Muhammad Afaq",
       title: "Travel Tales and Tourism",
-      image: "/nordicxpress.jpg",
+      image: "/traveltales.webp",
     },
     content:
-      "Luxsit Technologies did an outstanding job developing our website for Travel Tales and Tourism. They captured our brand perfectly and delivered a clean, functional, and visually appealing site. The team was professional, responsive, and easy to work with throughout the entire process. We're very pleased with the results and highly recommend them for any web development project.",
+      "Working with Luxsit Technologies on our Travel Tales website was a smooth experience. They took the time to understand what we needed and translated it into a site that works well and looks great. The process was straightforward, and their team was easy to communicate with.",
     rating: 4.5,
     color: "#177399",
   }

@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import PropTypes from "prop-types";
 
-// Updated data structure - removed gif properties and added related images
+// Data structure remains the same
 const sliderData = [
   [
     {
@@ -77,6 +77,30 @@ const sliderData = [
       ],
       link: "#",
     },
+    {
+      color: "#f5f5f5",
+      src: "/jetclean/1.png",
+      title: "Jet Clean",
+      description: " Jet Clean offers professional and reliable laundry services, ensuring your clothes are cleaned, folded, and delivered with care. From everyday wear to delicate fabrics, we handle it all with top-quality equipment and attention to detail. Our service focuses on convenience, hygiene, and customer satisfaction, making laundry day hassle-free for individuals and families alike.",
+      relatedImages: [
+        "/jetclean/2.png",
+        "/jetclean/3.png",
+        "/jetclean/4.png"
+      ],
+      link: "#",
+    },
+    {
+      color: "#f5f5f5",
+      src: "/manqoosh/1.png",
+      title: "Manqoosh",
+      description: "Manqoosh Marketing & Advertising is a modern and innovative digital marketing agency based in Dubai, UAE. We specialize in delivering a full range of online advertising solutions and website design services tailored to help brands grow in the digital landscape. Our expertise spans social media marketing, SEO, PPC, branding, and creative design—empowering businesses to reach their audience effectively and make a lasting impact.",
+      relatedImages: [
+        "/manqoosh/3.png",
+        "/manqoosh/3.png",
+        "/manqoosh/4.png"
+      ],
+      link: "#",
+    },
   ],
 ];
 
@@ -107,103 +131,248 @@ function Portfolio() {
       </motion.p>
 
       {sliderData.map((slider, index) => (
-        <Slider key={index} projects={slider} reverse={index % 2 !== 0} onProjectClick={setSelectedProject} />
+        <CurvedCarousel key={index} projects={slider} onProjectClick={setSelectedProject} />
       ))}
 
       {selectedProject && (
         <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
       )}
+      
+      {/* Add curved screen styling */}
+      <style jsx global>{`
+        .carousel-container {
+          position: relative;
+          overflow: hidden;
+          padding: 60px 0;
+        }
+        
+        .carousel-track {
+          position: relative;
+          height: 450px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .carousel-item {
+          position: absolute;
+          transition: all 0.5s ease;
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .carousel-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </motion.div>
   );
 }
 
-function Slider({ projects, reverse, onProjectClick }) {
-  const sliderRef = useRef(null);
-  const containerRef = useRef(null);
-  const isInView = useInView(sliderRef, { once: true });
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [maxScroll, setMaxScroll] = useState(0);
+function CurvedCarousel({ projects, onProjectClick }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef(null);
+  const isInView = useInView(carouselRef, { once: true });
 
-  useEffect(() => {
-    if (containerRef.current) {
-      setMaxScroll(containerRef.current.scrollWidth - containerRef.current.clientWidth);
+  const totalItems = projects.length;
+  const itemsToShow = Math.min(5, totalItems);
+  
+  const goToPrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + totalItems) % totalItems);
+  };
+  
+  const goToNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalItems);
+  };
+  
+  const getItemStyles = (index) => {
+    // Get the relative position from current index
+    let position = (index - currentIndex + totalItems) % totalItems;
+    
+    // Adjust position for optimal display
+    if (position > totalItems / 2) position -= totalItems;
+    
+    // Middle item
+    if (position === 0) {
+      return {
+        left: '50%',
+        transform: 'translateX(-50%) scale(1)',
+        zIndex: 5,
+        opacity: 1,
+        width: '32vw',
+        height: '21vw',
+        filter: 'brightness(100%)'
+      };
     }
-  }, [projects]);
-
-  const handleScroll = (direction) => {
-    if (!containerRef.current) return;
     
-    const scrollAmount = containerRef.current.clientWidth * 0.6;
-    const newPosition = direction === 'left' 
-      ? Math.max(scrollPosition - scrollAmount, 0)
-      : Math.min(scrollPosition + scrollAmount, maxScroll);
+    // Items to the left of middle
+    if (position === -1) {
+      return {
+        left: '25%',
+        transform: 'translateX(-50%) scale(0.85) perspective(800px) rotateY(25deg)',
+        zIndex: 4,
+        opacity: 0.8,
+        width: '28vw',
+        height: '18vw',
+        filter: 'brightness(70%)'
+      };
+    }
     
-    containerRef.current.scrollTo({
-      left: newPosition,
-      behavior: 'smooth'
-    });
+    if (position === -2) {
+      return {
+        left: '8%',
+        transform: 'translateX(-50%) scale(0.7) perspective(800px) rotateY(35deg)',
+        zIndex: 3,
+        opacity: 0.6,
+        width: '24vw',
+        height: '16vw',
+        filter: 'brightness(50%)'
+      };
+    }
     
-    setScrollPosition(newPosition);
+    // Items to the right of middle
+    if (position === 1) {
+      return {
+        left: '75%',
+        transform: 'translateX(-50%) scale(0.85) perspective(800px) rotateY(-25deg)',
+        zIndex: 4,
+        opacity: 0.8,
+        width: '28vw',
+        height: '18vw',
+        filter: 'brightness(70%)'
+      };
+    }
+    
+    if (position === 2) {
+      return {
+        left: '92%',
+        transform: 'translateX(-50%) scale(0.7) perspective(800px) rotateY(-35deg)',
+        zIndex: 3,
+        opacity: 0.6,
+        width: '24vw',
+        height: '16vw',
+        filter: 'brightness(50%)'
+      };
+    }
+    
+    // Other items - hide them
+    return {
+      left: position < 0 ? '-10%' : '110%',
+      transform: 'translateX(-50%) scale(0.5)',
+      zIndex: 1,
+      opacity: 0,
+      width: '20vw',
+      height: '14vw',
+      filter: 'brightness(30%)'
+    };
   };
 
   return (
-    <div className="relative my-16">
+    <div className="relative my-16" ref={carouselRef}>
       <motion.div 
-        ref={sliderRef} 
-        className="relative overflow-hidden"
+        className="carousel-container"
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : {}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <motion.div
-          ref={containerRef}
-          className="flex gap-6 px-4 md:px-10 pb-6 md:pb-10 md:gap-10 min-w-full overflow-x-scroll scrollbar-hide"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          onScroll={(e) => setScrollPosition(e.currentTarget.scrollLeft)}
+        <div className="carousel-track">
+          {projects.map((project, index) => {
+            const styles = getItemStyles(index);
+            
+            return (
+              <motion.div
+                key={index}
+                className="carousel-item"
+                style={{
+                  ...styles,
+                  backgroundColor: project.color,
+                  cursor: index === currentIndex ? 'pointer' : styles.opacity > 0.5 ? 'pointer' : 'default'
+                }}
+                initial={false}
+                animate={styles}
+                transition={{ duration: 0.5 }}
+                onClick={() => {
+                  if (index === currentIndex) {
+                    onProjectClick(project);
+                  } else if (styles.opacity > 0.5) {
+                    setCurrentIndex(index);
+                  }
+                }}
+              >
+                <img 
+                  src={project.src} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover"
+                />
+                {index === currentIndex && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-[#737373] bg-opacity-60 text-white p-2">
+                    <h3 className="text-lg font-bold truncate">{project.title}</h3>
+                  </div>
+                )}
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Arrow navigation buttons */}
+        <motion.button
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-3 z-10 shadow-lg"
+          onClick={goToPrev}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          animate={{ 
+            x: [0, -5, 0],
+            transition: { x: { repeat: Infinity, repeatType: "reverse", duration: 1.5 } }
+          }}
         >
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} onClick={() => onProjectClick(project)} />
-          ))}
-        </motion.div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </motion.button>
+
+        <motion.button
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-3 z-10 shadow-lg"
+          onClick={goToNext}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          animate={{ 
+            x: [0, 5, 0],
+            transition: { x: { repeat: Infinity, repeatType: "reverse", duration: 1.5 } }
+          }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </motion.button>
       </motion.div>
 
-      {/* Left Arrow */}
-      <motion.button
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-3 z-10 shadow-lg"
-        onClick={() => handleScroll('left')}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        animate={{ 
-          opacity: scrollPosition > 0 ? 1 : 0.3,
-          x: [0, -5, 0],
-          transition: { x: { repeat: Infinity, repeatType: "reverse", duration: 1.5 } }
-        }}
-        disabled={scrollPosition <= 0}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M15 18l-6-6 6-6" />
-        </svg>
-      </motion.button>
-
-      {/* Right Arrow */}
-      <motion.button
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-3 z-10 shadow-lg"
-        onClick={() => handleScroll('right')}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        animate={{ 
-          opacity: scrollPosition < maxScroll ? 1 : 0.3,
-          x: [0, 5, 0],
-          transition: { x: { repeat: Infinity, repeatType: "reverse", duration: 1.5 } }
-        }}
-        disabled={scrollPosition >= maxScroll}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M9 18l6-6-6-6" />
-        </svg>
-      </motion.button>
+      {/* Indicator dots */}
+      <div className="flex justify-center mt-6 gap-2">
+        {projects.map((_, index) => (
+          <button
+            key={index}
+            className={`h-2 rounded-full transition-all ${currentIndex === index ? 'w-8 bg-white' : 'w-2 bg-gray-500'}`}
+            onClick={() => setCurrentIndex(index)}
+          />
+        ))}
+      </div>
     </div>
   );
 }
 
-Slider.propTypes = {
+CurvedCarousel.propTypes = {
   projects: PropTypes.arrayOf(
     PropTypes.shape({
       color: PropTypes.string.isRequired,
@@ -214,64 +383,7 @@ Slider.propTypes = {
       link: PropTypes.string.isRequired,
     })
   ).isRequired,
-  reverse: PropTypes.bool.isRequired,
   onProjectClick: PropTypes.func.isRequired,
-};
-
-function ProjectCard({ project, onClick }) {
-  const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef(null);
-  const isInView = useInView(cardRef, { once: true });
-
-  return (
-    <motion.div
-      ref={cardRef}
-      className="relative h-[21vw] w-[32vw] shrink-0 overflow-hidden rounded-lg shadow-lg cursor-pointer"
-      style={{ backgroundColor: project.color }}
-      initial={{ opacity: 0, x: -50 }}
-      animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={onClick}
-    >
-      <motion.img
-        src={project.src}
-        alt={project.title}
-        className="h-full w-full object-cover"
-        animate={{ scale: isHovered ? 0.9 : 1 }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-      />
-      
-      {/* Always visible title bar at the bottom */}
-      <div className="absolute bottom-0 left-0 right-0 bg-[#737373] bg-opacity-60 text-white p-2">
-        <h3 className="text-lg font-bold truncate">{project.title}</h3>
-      </div>
-      
-      {/* Full overlay that appears on hover */}
-      <motion.div 
-        className="absolute bottom-0 left-0 right-0 bg-[#737373] text-white p-4"
-        initial={{ y: "100%" }}
-        animate={{ y: isHovered ? 0 : "100%" }}
-        transition={{ duration: 0.3 }}
-      >
-        <h3 className="text-lg font-bold">{project.title}</h3>
-        <p className="text-sm">{project.description}</p>
-      </motion.div>
-    </motion.div>
-  );
-}
-
-ProjectCard.propTypes = {
-  project: PropTypes.shape({
-    color: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    relatedImages: PropTypes.arrayOf(PropTypes.string).isRequired,
-    link: PropTypes.string.isRequired,
-  }).isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
 function ProjectModal({ project, onClose }) {
@@ -372,16 +484,5 @@ ProjectModal.propTypes = {
   }).isRequired,
   onClose: PropTypes.func.isRequired,
 };
-
-const scrollbarHideStyles = `
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-`;
 
 export default Portfolio;

@@ -1,310 +1,123 @@
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Play, Pause, Volume2, VolumeX, Maximize, Rewind, FastForward } from "lucide-react";
-import { Button } from "../video/Button";
-import { Slider } from "../video/slider";
+import React from 'react';
+import { motion } from 'framer-motion';
 
-export default function VideoPlayer() {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [volume, setVolume] = useState(100);
-  const [duration, setDuration] = useState(0);
-  const [showControls, setShowControls] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
-  const videoRef = useRef(null);
-  const controlsTimeoutRef = useRef(null);
-  const playerRef = useRef(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      const handleLoadedMetadata = () => {
-        setDuration(videoRef.current.duration);
-      };
-      
-      videoRef.current.addEventListener('loadedmetadata', handleLoadedMetadata);
-      
-      return () => {
-        if (videoRef.current) {
-          videoRef.current.removeEventListener('loadedmetadata', handleLoadedMetadata);
-        }
-      };
-    }
-  }, []);
-
-  // Effect to handle auto-play on hover
-  useEffect(() => {
-    if (videoRef.current) {
-      if (isHovering && !isPlaying) {
-        videoRef.current.play().catch(err => console.log('Autoplay prevented:', err));
-        setIsPlaying(true);
-      } else if (!isHovering && isPlaying && !showControls) {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      }
-    }
-  }, [isHovering, isPlaying, showControls]);
-
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play().catch(err => console.log('Play prevented:', err));
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  };
-
-  const handleProgress = () => {
-    if (videoRef.current) {
-      const progress = (videoRef.current.currentTime / videoRef.current.duration) * 100;
-      setProgress(progress);
-    }
-  };
-
-  const handleSeek = (value) => {
-    if (videoRef.current) {
-      const newTime = (value[0] / 100) * videoRef.current.duration;
-      videoRef.current.currentTime = newTime;
-      setProgress(value[0]);
-    }
-  };
-
-  const handleVolumeChange = (value) => {
-    if (videoRef.current) {
-      videoRef.current.volume = value[0] / 100;
-      setVolume(value[0]);
-      setIsMuted(value[0] === 0);
-    }
-  };
-
-  const formatTime = (time) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-  };
-
-  const skip = (amount) => {
-    if (videoRef.current) {
-      videoRef.current.currentTime += amount;
-    }
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovering(true);
-    setShowControls(true);
-    if (controlsTimeoutRef.current) {
-      clearTimeout(controlsTimeoutRef.current);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovering(false);
-    setShowControls(false);
-    if (controlsTimeoutRef.current) {
-      clearTimeout(controlsTimeoutRef.current);
-    }
-  };
-
-  const handleMouseMove = () => {
-    setShowControls(true);
-    if (controlsTimeoutRef.current) {
-      clearTimeout(controlsTimeoutRef.current);
-    }
-    controlsTimeoutRef.current = setTimeout(() => {
-      if (!playerRef.current?.matches(':hover')) {
-        setShowControls(false);
-      }
-    }, 3000);
-  };
-
-  // Animation variants
-  const controlsVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut"
-      }
+export default function TechnologyLogos() {
+  const technologies = [
+    {
+      name: "React",
+      logo: (
+        <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-20 md:h-20">
+          <circle cx="50" cy="50" r="9" fill="#61DAFB" />
+          <ellipse cx="50" cy="50" rx="40" ry="15" fill="none" stroke="#61DAFB" strokeWidth="2.5" />
+          <ellipse cx="50" cy="50" rx="40" ry="15" fill="none" stroke="#61DAFB" strokeWidth="2.5" transform="rotate(60 50 50)" />
+          <ellipse cx="50" cy="50" rx="40" ry="15" fill="none" stroke="#61DAFB" strokeWidth="2.5" transform="rotate(-60 50 50)" />
+        </svg>
+      )
     },
-    exit: { 
-      opacity: 0, 
-      y: 10,
-      transition: {
-        duration: 0.2,
-        ease: "easeIn"
-      }
-    }
-  };
-
-  const bigPlayButtonVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut"
-      }
+    {
+      name: "Laravel/PHP",
+      logo: (
+        <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-20 md:h-20">
+          <path d="M78 21L50 86 22 21h56z" fill="#FF2D20" />
+          <path d="M50 76L28 26h44L50 76z" fill="#FFFFFF" opacity="0.1" />
+          <path d="M61 31L50 62 39 31h22z" fill="#FFFFFF" />
+        </svg>
+      )
     },
-    exit: { 
-      opacity: 0, 
-      scale: 0.8,
-      transition: {
-        duration: 0.2,
-        ease: "easeIn"
-      }
+    {
+      name: "Flutter",
+      logo: (
+        <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-20 md:h-20">
+          <path d="M24 50L39 65L69 35H39L24 50Z" fill="#47C5FB" />
+          <path d="M39 80L54 95L84 65H69L39 80Z" fill="#47C5FB" />
+          <path d="M39 20H69L39 50L24 35L39 20Z" fill="#00569E" />
+          <path d="M39 50L69 80L54 95L24 65L39 50Z" fill="#00B5F8" />
+          <path d="M69 35L84 50L69 65L54 50L69 35Z" fill="#1A73E8" />
+        </svg>
+      )
     },
-    hover: {
-      scale: 1.1,
-      transition: {
-        duration: 0.2,
-        ease: "easeOut"
-      }
+    {
+      name: "Python",
+      logo: (
+        <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-20 md:h-20">
+          <path 
+            d="M50 12c-14.5 0-13.5 6.2-13.5 6.2l.02 6.5h13.8v2H29.7s-9.2-1-9.2 13.5c0 14.4 8 13.8 8 13.8h4.8V48s-.3-8 8-8h13.5s7.6.1 7.6-7.4v-12.4s1.5-8.2-12.4-8.2zm-7.6 4.7c1.4 0 2.5 1.1 2.5 2.5s-1.1 2.5-2.5 2.5c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5z" 
+            fill="#366994" 
+          />
+          <path 
+            d="M50 88c14.5 0 13.5-6.2 13.5-6.2l-.02-6.5h-13.8v-2h20.7s9.2 1 9.2-13.5c0-14.4-8-13.8-8-13.8h-4.8v6s.3 8-8 8h-13.5s-7.6-.1-7.6 7.4v12.4s-1.5 8.2 12.4 8.2zm7.6-4.7c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5c1.4 0 2.5 1.1 2.5 2.5s-1.1 2.5-2.5 2.5z" 
+            fill="#FFD43B" 
+          />
+        </svg>
+      )
+    },
+    {
+      name: ".NET",
+      logo: (
+        <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-20 md:h-20">
+          <rect x="0" y="0" width="100" height="100" fill="#512BD4" />
+          <text x="50%" y="50%" textAnchor="middle" alignmentBaseline="middle" fontSize="20" fill="white" fontWeight="bold">
+            .NET
+          </text>
+        </svg>
+      )
+    },
+    {
+      name: "AI/ML",
+      logo: (
+        <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-20 md:h-20">
+          <circle cx="30" cy="30" r="6" fill="#0EA5E9" />
+          <circle cx="70" cy="30" r="6" fill="#0EA5E9" />
+          <circle cx="30" cy="50" r="6" fill="#0EA5E9" />
+          <circle cx="70" cy="50" r="6" fill="#0EA5E9" />
+          <circle cx="30" cy="70" r="6" fill="#0EA5E9" />
+          <circle cx="70" cy="70" r="6" fill="#0EA5E9" />
+          <circle cx="50" cy="40" r="6" fill="#0EA5E9" />
+          <circle cx="50" cy="60" r="6" fill="#0EA5E9" />
+          <line x1="30" y1="30" x2="50" y2="40" stroke="#0EA5E9" strokeWidth="2" />
+          <line x1="30" y1="30" x2="30" y2="50" stroke="#0EA5E9" strokeWidth="2" />
+          <line x1="30" y1="30" x2="70" y2="30" stroke="#0EA5E9" strokeWidth="2" />
+          <line x1="70" y1="30" x2="50" y2="40" stroke="#0EA5E9" strokeWidth="2" />
+          <line x1="30" y1="50" x2="50" y2="40" stroke="#0EA5E9" strokeWidth="2" />
+          <line x1="30" y1="50" x2="30" y2="70" stroke="#0EA5E9" strokeWidth="2" />
+          <line x1="30" y1="50" x2="50" y2="60" stroke="#0EA5E9" strokeWidth="2" />
+          <line x1="70" y1="50" x2="50" y2="40" stroke="#0EA5E9" strokeWidth="2" />
+          <line x1="70" y1="50" x2="70" y2="30" stroke="#0EA5E9" strokeWidth="2" />
+          <line x1="70" y1="50" x2="70" y2="70" stroke="#0EA5E9" strokeWidth="2" />
+          <line x1="70" y1="50" x2="50" y2="60" stroke="#0EA5E9" strokeWidth="2" />
+          <line x1="30" y1="70" x2="50" y2="60" stroke="#0EA5E9" strokeWidth="2" />
+          <line x1="70" y1="70" x2="50" y2="60" stroke="#0EA5E9" strokeWidth="2" />
+        </svg>
+      )
     }
-  };
+  ];
 
   return (
-    <div className="max-w-4xl mx-auto pt-20">
-      <motion.h2 
-        className="text-4xl font-bold mb-4 text-center text-white pb-8"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        In our clients words
-      </motion.h2>
-      
-      <motion.div
-        ref={playerRef}
-        className="relative aspect-video bg-black rounded-lg overflow-hidden shadow-xl"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onMouseMove={handleMouseMove}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        whileHover={{ scale: 1.01 }}
-        whileTap={{ scale: 0.99 }}
-      >
-        <video
-          ref={videoRef}
-          className="w-full h-full object-cover"
-          src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-          onTimeUpdate={handleProgress}
-          onClick={togglePlay}
-          playsInline
-        />
-        
-        <AnimatePresence>
-          {!isPlaying && (
-            <motion.div 
-              className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40"
-              variants={bigPlayButtonVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            >
-              <motion.div
-                variants={bigPlayButtonVariants}
-                whileHover="hover"
-              >
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  className="w-20 h-20 text-white bg-primary/80 hover:bg-primary/90 rounded-full transition-transform"
-                  onClick={togglePlay}
-                >
-                  <Play className="w-10 h-10" />
-                </Button>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-        
-        <AnimatePresence>
-          {showControls && (
+    <div className="w-full bg-black text-white py-16">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          TECHNOLOGIES 
+        </h2>
+
+        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+          {technologies.map((tech, index) => (
             <motion.div
-              className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4"
-              variants={controlsVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
+              key={index}
+              className="flex flex-col items-center"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              viewport={{ once: true }}
             >
-              <Slider 
-                value={[progress]} 
-                onValueChange={handleSeek} 
-                max={100} 
-                step={0.1} 
-                className="mb-4 w-full" 
-              />
-              
-              <div className="flex items-center justify-between text-white">
-                <div className="flex items-center space-x-4">
-                  <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                    <Button size="icon" variant="ghost" onClick={() => skip(-10)}>
-                      <Rewind className="w-5 h-5" />
-                    </Button>
-                  </motion.div>
-                  
-                  <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      onClick={togglePlay}
-                      className="bg-primary/80 hover:bg-primary/90 rounded-full"
-                    >
-                      {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
-                    </Button>
-                  </motion.div>
-                  
-                  <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                    <Button size="icon" variant="ghost" onClick={() => skip(10)}>
-                      <FastForward className="w-5 h-5" />
-                    </Button>
-                  </motion.div>
-                  
-                  <motion.span 
-                    className="text-sm"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.1 }}
-                  >
-                    {formatTime(videoRef.current?.currentTime || 0)} / {formatTime(duration)}
-                  </motion.span>
-                </div>
-                
-                <div className="flex items-center space-x-4">
-                  <motion.div className="flex items-center space-x-2">
-                    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                      <Button size="icon" variant="ghost" onClick={toggleMute}>
-                        {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-                      </Button>
-                    </motion.div>
-                    <Slider value={[volume]} onValueChange={handleVolumeChange} max={100} step={1} className="w-24" />
-                  </motion.div>
-                  
-                  <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                    <Button size="icon" variant="ghost">
-                      <Maximize className="w-5 h-5" />
-                    </Button>
-                  </motion.div>
-                </div>
+              <div className="bg-black p-4 rounded-lg">
+                {tech.logo}
               </div>
+              <p className="mt-2 text-lg font-medium">{tech.name}</p>
             </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

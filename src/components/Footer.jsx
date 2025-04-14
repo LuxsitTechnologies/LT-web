@@ -89,56 +89,7 @@ const Footer = () => {
       {/* Content Container */}
       <div className="container mx-auto px-6 lg:px-20 relative z-10">
         
-        {/* Footer Grid - Services, Technologies, Resources, Company */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-          
-          {/* Services */}
-          <div className="animate-on-scroll opacity-0 transform translate-y-4" style={{ transitionDelay: '100ms' }}>
-            <h3 className="text-lg font-semibold text-blue-500 mb-4 relative" style={{ color: '#177399' }}>
-              Services
-              <span className="absolute -bottom-1 left-0 w-12 h-0.5 bg-blue-500 transform transition-all duration-300 group-hover:w-full" style={{ backgroundColor: '#177399' }}></span>
-            </h3>
-            <ul className="space-y-2 text-gray-400">
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Automation</li>
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Web Applications</li>
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Mobile Applications</li>
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>AI Solutions</li>
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Custom Software</li>
-            </ul>
-          </div>
-          
-          {/* Technologies */}
-          <div className="animate-on-scroll opacity-0 transform translate-y-4" style={{ transitionDelay: '200ms' }}>
-            <h3 className="text-lg font-semibold text-blue-500 mb-4 relative" style={{ color: '#177399' }}>
-              Technologies
-              <span className="absolute -bottom-1 left-0 w-12 h-0.5 bg-blue-500 transform transition-all duration-300 group-hover:w-full" style={{ backgroundColor: '#177399' }}></span>
-            </h3>
-            <ul className="space-y-2 text-gray-400">
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>React</li>
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Laravel</li>
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Flutter</li>
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Python</li>
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>.NET</li>
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>AI/ML</li>
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Php/Laravel</li>
-
-            </ul>
-          </div>
-          
-          {/* Company */}
-          <div className="animate-on-scroll opacity-0 transform translate-y-4" style={{ transitionDelay: '400ms' }}>
-            <h3 className="text-lg font-semibold text-blue-500 mb-4 relative" style={{ color: '#177399' }}>
-              Company
-              <span className="absolute -bottom-1 left-0 w-12 h-0.5 bg-blue-500 transform transition-all duration-300 group-hover:w-full" style={{ backgroundColor: '#177399' }}></span>
-            </h3>
-            <ul className="space-y-2 text-gray-400">
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>About Us</li>
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Careers</li>
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Contact</li>
-              <li className="hover:text-blue-500 cursor-pointer transition duration-300 transform hover:translate-x-2" style={{ '--hover-color': '#177399' }}>Blog</li>
-            </ul>
-          </div>
-        </div>
+     
         
         {/* Divider */}
         <div className="border-t border-blue-500 opacity-50 mb-8 animate-on-scroll opacity-0" style={{ borderColor: '#177399', transitionDelay: '500ms' }}></div>
@@ -172,7 +123,7 @@ const Footer = () => {
               </p>
               
               <div className="min-h-12 transition-all duration-300">
-                <p><span className="block">Office: {officeInfo[selectedOffice].address.split('\n').map((line, i) => (
+                <p><span className="block"> {officeInfo[selectedOffice].address.split('\n').map((line, i) => (
                   <React.Fragment key={i}>
                     {line}
                     {i < officeInfo[selectedOffice].address.split('\n').length - 1 && <br />}

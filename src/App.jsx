@@ -28,7 +28,8 @@ function App() {
       <section id="services" className="py-16">
         <Services />
       </section>
-      {/* <VideoSection /> */}
+      <VideoSection />
+
 
       {/* Testimonials Section */}
       <section id="testimonials" className="py-16">

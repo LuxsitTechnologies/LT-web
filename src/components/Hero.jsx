@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 // Floating SVG Animation with synchronized transitions
 function FloatingPaths({ position }) {
   // State to control which side is currently animating
-  const [animatingSide, setAnimatingSide] = useState("left");
+  const [animatingSide, setAnimatingSide] = useState("both"); // Start with both sides animating
   
   // Define the three colors from the request
   const colors = ["#545454", "#177399", "#737373"];
@@ -44,11 +44,19 @@ function FloatingPaths({ position }) {
   
   // Effect to toggle between left and right animations
   useEffect(() => {
-    const timer = setInterval(() => {
-      setAnimatingSide(prev => prev === "left" ? "right" : "left");
-    }, animationDuration * 1000); // Convert seconds to milliseconds
+    // Start with both sides animating, then switch to alternating after first animation
+    const timer = setTimeout(() => {
+      setAnimatingSide("left");
+      
+      // Then set up the interval for alternating
+      const intervalTimer = setInterval(() => {
+        setAnimatingSide(prev => prev === "left" ? "right" : "left");
+      }, animationDuration * 1000);
+      
+      return () => clearInterval(intervalTimer);
+    }, animationDuration * 1000);
     
-    return () => clearInterval(timer);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -56,7 +64,7 @@ function FloatingPaths({ position }) {
       <svg className="w-full h-full" viewBox="0 0 696 316" fill="none">
         <title>Background Paths</title>
         
-        {/* Left-to-right paths */}
+        {/* Left-to-right paths - start animating immediately */}
         {paths.map((path) => (
           <motion.path
             key={path.id}
@@ -66,17 +74,17 @@ function FloatingPaths({ position }) {
             strokeOpacity={0.1 + (path.id % 36) * 0.03}
             initial={{ pathLength: 0 }}
             animate={{ 
-              pathLength: animatingSide === "left" ? [0, 1] : 0 
+              pathLength: animatingSide === "right" ? 0 : 1 
             }}
             transition={{
               duration: animationDuration,
               ease: "linear",
-              delay: (path.id % 4) * 0.15,
+              delay: 0, // Remove delay for immediate start
             }}
           />
         ))}
         
-        {/* Right-to-left paths */}
+        {/* Right-to-left paths - start animating immediately */}
         {reversePaths.map((path) => (
           <motion.path
             key={path.id}
@@ -86,12 +94,12 @@ function FloatingPaths({ position }) {
             strokeOpacity={0.1 + ((path.id-100) % 36) * 0.03}
             initial={{ pathLength: 0 }}
             animate={{ 
-              pathLength: animatingSide === "right" ? [0, 1] : 0 
+              pathLength: animatingSide === "left" ? 0 : 1
             }}
             transition={{
               duration: animationDuration,
               ease: "linear",
-              delay: ((path.id-100) % 4) * 0.15,
+              delay: 0, // Remove delay for immediate start
             }}
           />
         ))}
@@ -104,7 +112,7 @@ FloatingPaths.propTypes = {
   position: PropTypes.number.isRequired,
 };
 
-// Alternating Text Animations (Left & Right)
+// Alternating Text Animations (Left & Right) - Reduced delay
 const textVariants = {
   hidden: (i) => ({ 
     opacity: 0, 
@@ -116,8 +124,8 @@ const textVariants = {
     x: 0,
     y: 0,
     transition: {
-      delay: i * 0.2, 
-      duration: 0.7,
+      delay: i * 0.1, // Reduced from 0.2 to 0.1 for faster animation
+      duration: 0.5, // Reduced from 0.7 to 0.5 for faster animation
       type: "spring",
       stiffness: 100,
     },
@@ -143,9 +151,8 @@ function Hero() {
   return (
     <motion.div
       className="relative min-h-screen w-full flex items-start justify-center pt-40 overflow-hidden bg-black text-white"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
+      initial="visible"
+      animate="visible"
     >
       {/* Animated Background */}
       <div className="absolute inset-0 pointer-events-none transform -translate-y-60 md:-translate-y-32">
@@ -156,7 +163,8 @@ function Hero() {
       {/* Hero Content */}
       <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
         <motion.div
-          variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
+          initial="hidden"
+          animate="visible"
           className="max-w-4xl mx-auto"
         >
           {/* Title */}
@@ -187,7 +195,7 @@ function Hero() {
           <motion.div
             className="mt-12 flex items-center justify-center"
             variants={textVariants}
-            custom={3}
+            custom={2}
           >
            
            
