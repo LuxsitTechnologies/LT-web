@@ -2,15 +2,15 @@ import { useEffect, useRef } from 'react';
 
 const Company = () => {
   const scrollContainerRef = useRef(null);
-  
+
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
     if (!scrollContainer) return;
-    
+
     let scrollPosition = 0;
-    const scrollSpeed = 0.8; // Reduced from 0.5 to make it slower
+    const scrollSpeed = 0.04; // Reduced speed for smoother movement
     const totalWidth = scrollContainer.scrollWidth;
-    
+
     // Clone the logos to create infinite scroll effect
     const cloneLogos = () => {
       const logos = scrollContainer.querySelectorAll('.logo-item');
@@ -19,54 +19,43 @@ const Company = () => {
         scrollContainer.appendChild(clone);
       });
     };
-    
+
     cloneLogos();
-    
+
     let lastTimestamp = null;
-    
+
     const animate = (timestamp) => {
-      // Initialize lastTimestamp on first run
-      if (!lastTimestamp) {
-        lastTimestamp = timestamp;
+      if (lastTimestamp !== null) {
+        const elapsed = timestamp - lastTimestamp;
+        scrollPosition += scrollSpeed * elapsed;
+        if (scrollPosition >= totalWidth / 2) {
+          scrollPosition = 0;
+        }
+        scrollContainer.scrollLeft = scrollPosition;
       }
-      
-      // Calculate time elapsed since last frame in milliseconds
-      const elapsed = timestamp - lastTimestamp;
-      
-      // Use elapsed time to ensure constant speed regardless of frame rate
-      scrollPosition += (scrollSpeed * elapsed) / 16; // Normalize based on 60fps
-      
-      // Reset position when we've scrolled through all original logos
-      if (scrollPosition >= totalWidth / 2) {
-        scrollPosition = 0;
-      }
-      
-      scrollContainer.scrollLeft = scrollPosition;
       lastTimestamp = timestamp;
-      
       animationId = requestAnimationFrame(animate);
     };
-    
+
     let animationId = requestAnimationFrame(animate);
     let isPaused = false;
-    
-    // Pause animation on hover
+
     const handleMouseEnter = () => {
       isPaused = true;
       cancelAnimationFrame(animationId);
     };
-    
+
     const handleMouseLeave = () => {
       if (isPaused) {
         isPaused = false;
-        lastTimestamp = null; // Reset timestamp to avoid jumps
+        lastTimestamp = null;
         animationId = requestAnimationFrame(animate);
       }
     };
-    
+
     scrollContainer.addEventListener('mouseenter', handleMouseEnter);
     scrollContainer.addEventListener('mouseleave', handleMouseLeave);
-    
+
     return () => {
       cancelAnimationFrame(animationId);
       scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
@@ -91,21 +80,23 @@ const Company = () => {
         <h1 className="text-white text-center text-2xl md:text-3xl font-bold mb-12 uppercase tracking-wide">
           Trusted by Top Companies, Proven by Success.
         </h1>
-        
-        <div 
+
+        <div
           ref={scrollContainerRef}
           className="flex overflow-x-hidden whitespace-nowrap mt-6 py-4"
         >
           {logos.map((logo, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="logo-item flex items-center justify-center mx-6 min-w-max"
             >
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                className="object-contain h-16 md:h-20 transition-transform duration-300 hover:scale-110 cursor-pointer"
-              />
+              <div className="w-36 h-18 flex items-center justify-center">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="max-h-full max-w-full object-contain transition-transform duration-500 ease-in-out hover:scale-110 cursor-pointer"
+                />
+              </div>
             </div>
           ))}
         </div>

@@ -125,7 +125,7 @@ function Portfolio() {
       transition={{ duration: 1, ease: "easeInOut" }}
     >
       <motion.h2 className="mb-8 text-center text-4xl font-bold text-white">
-        Featured Projects
+        FEATURED PROJECTS
       </motion.h2>
       <motion.p className="mb-20 text-center text-xl text-white">
       </motion.p>

@@ -32,7 +32,7 @@ const testimonials = [
     author: {
       name: "Hassan Raza",
       title: "Pixel Tech",
-      image: "/jetclean.png",
+      image: "/pixeltech-logo.jpg",
     },
     content:
       "We worked with Luxsit Technologies on our website at Pixel Tech, and the experience was smooth overall. They handled both the design and development professionally and were open to our input throughout the process. There were a few adjustments along the way, but the team stayed responsive and made sure we got the result we wanted. We’re satisfied with the final site and appreciate their effort.",
