@@ -77,8 +77,8 @@ export default function ProfileTimeline() {
       <div className="max-w-7xl w-full px-4 py-16 md:py-24">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-          EXECUTION STRATEGY
+        <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+        EXECUTION STRATEGY
 
 
           </h1>

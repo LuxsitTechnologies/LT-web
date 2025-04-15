@@ -132,8 +132,8 @@ const Testimonials = () => {
           variants={containerVariants}
         >
           <motion.h2
-            className="mb-2 text-center text-3xl md:text-5xl font-bold uppercase tracking-wider text-white pt-6 mb-3"
-            variants={headingVariants}
+className="mb-8 text-center text-2xl md:text-4xl font-bold uppercase tracking-wide text-white pt-4"
+variants={headingVariants}
           >
             Testimonials
           </motion.h2>

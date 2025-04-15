@@ -90,7 +90,7 @@ export default function TechnologyLogos() {
         </svg>
       )
     }
-  ];
+  ]; 
 
   return (
     <div className="w-full bg-black text-white py-16">
