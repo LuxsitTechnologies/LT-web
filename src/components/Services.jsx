@@ -639,52 +639,51 @@ const AISolutionsDetailModal = ({ isOpen, onClose }) => {
     </motion.div>
   );
 };
-
 // ERP Solutions Detail Modal with enhanced content
 const ERPSolutionsDetailModal = ({ isOpen, onClose }) => {
   const erpSolutionDetails = [
     {
-      title: "Integrated ERP Systems",
-      description: "Our comprehensive ERP solutions unify disparate business functions into a cohesive ecosystem with centralized data and standardized processes. We implement end-to-end systems that provide a single source of truth across your organization, eliminating silos and enabling seamless cross-departmental workflows.",
-      icon: "🔄",
+      title: "Process Optimization",
+      description: "We analyze and redesign your business processes to maximize efficiency and effectiveness. Our ERP solutions eliminate redundancies, automate manual tasks, and create streamlined workflows that reduce operational costs while improving quality and consistency.",
+      icon: "⚙️",
       benefits: [
-        "Holistic visibility across all business operations",
-        "Elimination of duplicate data entry and reconciliation",
-        "Streamlined cross-functional processes and collaboration",
-        "Consistent reporting and analytics across departments"
+        "Reduced operational costs through process automation",
+        "Shortened cycle times for critical business processes",
+        "Improved accuracy and reduced human error",
+        "Enhanced adaptability to changing business requirements"
       ]
     },
     {
-      title: "Process Automation",
-      description: "We transform manual workflows into efficient automated processes that minimize human intervention while maximizing accuracy and throughput. Our automation frameworks handle routine tasks, complex approvals, and exception management, freeing your team to focus on strategic activities that drive business value.",
-      icon: "⚙️",
+      title: "Integrated Systems",
+      description: "We create unified ERP ecosystems that connect previously siloed departments and functions. Our integration approach ensures seamless data flow across your organization, providing real-time visibility, eliminating duplicate data entry, and enabling truly collaborative operations.",
+      icon: "🔄",
       benefits: [
-        "Dramatic reduction in processing time and operational costs",
-        "Enhanced accuracy with elimination of manual errors",
-        "Increased workforce productivity with focus on high-value tasks",
-        "Consistent execution of business processes across the organization"
+        "Single source of truth for critical business data",
+        "Elimination of information silos and data discrepancies",
+        "Enhanced cross-departmental collaboration",
+        "Comprehensive view of business operations"
       ]
     },
     {
       title: "Business Intelligence",
-      description: "Our ERP solutions incorporate sophisticated analytics capabilities that transform operational data into strategic insights. We implement customized dashboards, KPI tracking, and predictive analytics that provide real-time visibility into business performance and enable data-driven decision making at all levels.",
-      icon: "📊",
+      description: "We implement sophisticated analytics capabilities within your ERP system to transform raw data into actionable business intelligence. Our solutions include customizable dashboards, automated reporting, and predictive analytics that support informed decision-making at all organizational levels.",
+      icon: "📈",
       benefits: [
-        "Real-time insights for agile decision making",
-        "Proactive identification of issues before they impact the business",
-        "Performance optimization through data-driven strategies",
-        "Enhanced forecasting accuracy for better resource planning"
+        "Data-driven decision making across all departments",
+        "Early identification of trends, issues, and opportunities",
+        "Improved strategic planning with accurate forecasting",
+        "Enhanced performance monitoring with KPI tracking"
       ]
     },
     {
-      title: "Implementation Excellence",
-      description: "Our proven implementation methodology ensures smooth transitions to new ERP systems with minimal business disruption. We combine technical expertise with change management best practices to drive user adoption, accelerate time-to-value, and maximize return on your ERP investment.",
+      title: "Scalable Solutions",
+      description: "We design ERP systems that grow and evolve alongside your business. Our scalable architecture accommodates increasing transaction volumes, expanding user bases, and evolving business requirements without performance degradation, ensuring your ERP investment continues delivering value for years.",
       icon: "🚀",
       benefits: [
-        "Reduced implementation risk through methodical approach",
-        "Accelerated user adoption with comprehensive training",
-        "Minimized business disruption during transition",
-        "Faster realization of efficiency and productivity gains"
+        "Future-proof infrastructure that supports business growth",
+        "Adaptable functionality for changing business models",
+        "Modular design allowing phased implementation",
+        "Long-term ROI through sustainable ERP architecture"
       ]
     }
   ];
@@ -718,7 +717,7 @@ const ERPSolutionsDetailModal = ({ isOpen, onClose }) => {
             ERP Solution Services
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Transform your operational efficiency with integrated ERP solutions that streamline processes, enhance visibility, and drive sustainable business growth.
+            Streamline your operations and maximize efficiency with integrated ERP solutions that connect all aspects of your business for optimal performance.
           </p>
         </div>
 
@@ -780,91 +779,95 @@ const ERPSolutionsDetailModal = ({ isOpen, onClose }) => {
   );
 };
 
-// Main Services component
-const ServiceSection = () => {
+// Main Services Section Component
+const ServicesSection = () => {
   const [openModal, setOpenModal] = useState(null);
 
-  // Show modal based on service type
-  const showModal = (serviceType) => {
-    setOpenModal(serviceType);
+  const handleOpenModal = (serviceName) => {
+    setOpenModal(serviceName);
   };
 
-  // Close any open modal
-  const closeModal = () => {
+  const handleCloseModal = () => {
     setOpenModal(null);
   };
 
   return (
-    <section className="bg-gray-900 py-16">
-      <div className="container mx-auto px-4">
+    <section className="bg-gray-900 py-16 px-4">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-white mb-4">OUR SERVICES</h2>
-          
+          <h2 className="text-4xl font-bold text-white mb-4">Our Services</h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            We provide comprehensive technology solutions tailored to your business needs, 
+            helping you drive growth, efficiency, and innovation.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="bg-gray-800 rounded-lg p-6 h-full flex flex-col"
-              initial={{ opacity: 0, y: 20 }}
+              className="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300"
+              initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -10 }}
             >
-              <div 
-                className="w-16 h-16 rounded-lg flex items-center justify-center mb-4"
-                style={{ backgroundColor: service.color }}
-              >
-                <CustomIcon name={service.iconName} />
-              </div>
-              <h3 className="text-2xl font-semibold text-white mb-3">{service.title}</h3>
-              <p className="text-gray-300 mb-6 flex-grow">{service.description}</p>
-              <button
-                onClick={() => showModal(service.title)}
-                className="text-[#177399] hover:text-white transition-colors flex items-center font-medium"
-              >
-                Learn more
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  className="w-5 h-5 ml-1"
+              <div className="p-6">
+                <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-gray-700 text-[#177399] mb-6">
+                  <CustomIcon name={service.iconName} />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
+                <p className="text-gray-300 mb-6">{service.description}</p>
+                <button
+                  onClick={() => handleOpenModal(service.title)}
+                  className="inline-flex items-center text-[#177399] font-medium hover:text-blue-400 transition-colors"
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </button>
+                  Learn More
+                  <svg
+                    className="ml-2 w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
             </motion.div>
           ))}
         </div>
       </div>
 
-      {/* Render modals conditionally */}
+      {/* Modal Components */}
       <EcommerceDetailModal 
-        isOpen={openModal === "E-commerce"} 
-        onClose={closeModal} 
+        isOpen={openModal === "E-commerce"}
+        onClose={handleCloseModal}
       />
       <WebAppsDetailModal 
-        isOpen={openModal === "Web Applications"} 
-        onClose={closeModal} 
+        isOpen={openModal === "Web Applications"}
+        onClose={handleCloseModal}
       />
       <MobileAppsDetailModal 
-        isOpen={openModal === "Mobile Applications"} 
-        onClose={closeModal} 
+        isOpen={openModal === "Mobile Applications"}
+        onClose={handleCloseModal}
       />
       <AISolutionsDetailModal 
-        isOpen={openModal === "AI Solutions"} 
-        onClose={closeModal} 
+        isOpen={openModal === "AI Solutions"}
+        onClose={handleCloseModal}
       />
       <ERPSolutionsDetailModal 
-        isOpen={openModal === "ERP Solutions"} 
-        onClose={closeModal} 
+        isOpen={openModal === "ERP Solutions"}
+        onClose={handleCloseModal}
       />
     </section>
   );
 };
 
-export default ServiceSection;
+// Export the component
+export default ServicesSection;
