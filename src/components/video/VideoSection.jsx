@@ -63,6 +63,28 @@ export default function TechnologyLogos() {
       )
     },
     {
+      name: "Swift",
+      logo: (
+        <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-20 md:h-20">
+          <path d="M80 25C65 10 45 15 35 25c25-15 45 0 30 25-15 25-45 20-45 20s10 15 30 15c20 0 40-20 40-40 0-15-10-20-10-20z" fill="#FA7343" />
+          <path d="M35 65c-5-5-5-15 0-25 5-10 15-15 25-15-15-5-35 5-35 25s15 25.5 10 15z" fill="#FA7343" opacity="0.8" />
+        </svg>
+      )
+    },
+    {
+      name: "Android",
+      logo: (
+        <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-20 md:h-20">
+          <path d="M25 40 L30 25 L40 30 L45 20 L50 30 L55 20 L60 30 L70 25 L75 40 Z" fill="#3DDC84" />
+          <rect x="25" y="40" width="50" height="40" rx="5" fill="#3DDC84" />
+          <circle cx="35" cy="50" r="3" fill="#FFFFFF" />
+          <circle cx="65" cy="50" r="3" fill="#FFFFFF" />
+          <line x1="15" y1="55" x2="25" y2="55" stroke="#3DDC84" strokeWidth="3" strokeLinecap="round" />
+          <line x1="85" y1="55" x2="75" y2="55" stroke="#3DDC84" strokeWidth="3" strokeLinecap="round" />
+        </svg>
+      )
+    },
+    {
       name: "AI/ML",
       logo: (
         <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-20 md:h-20">

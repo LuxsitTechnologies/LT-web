@@ -722,7 +722,7 @@ const ERPSolutionsDetailModal = ({ isOpen, onClose }) => {
         </div>
 
         <div className="flex flex-col md:flex-row gap-6">
-          {/* Left Column with menu items */}
+        
           <div className="md:w-1/3 flex flex-col gap-2 md:border-r border-gray-700 pr-4">
             {erpSolutionDetails.map((detail, index) => (
               <motion.div 
@@ -743,7 +743,7 @@ const ERPSolutionsDetailModal = ({ isOpen, onClose }) => {
             ))}
           </div>
           
-          {/* Right Column with detail content */}
+          
           <div className="md:w-2/3 p-4">
             <motion.div 
               key={selectedDetail.title}
@@ -779,7 +779,7 @@ const ERPSolutionsDetailModal = ({ isOpen, onClose }) => {
   );
 };
 
-// Main Services Section Component
+
 const ServicesSection = () => {
   const [openModal, setOpenModal] = useState(null);
 
@@ -795,7 +795,7 @@ const ServicesSection = () => {
     <section className="bg-gray-900 py-16 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-white mb-4">Our Services</h2>
+          <h2 className="text-4xl font-bold text-white mb-4">OUR SERVICES</h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             We provide comprehensive technology solutions tailored to your business needs, 
             helping you drive growth, efficiency, and innovation.
@@ -844,7 +844,7 @@ const ServicesSection = () => {
         </div>
       </div>
 
-      {/* Modal Components */}
+      
       <EcommerceDetailModal 
         isOpen={openModal === "E-commerce"}
         onClose={handleCloseModal}
@@ -869,5 +869,5 @@ const ServicesSection = () => {
   );
 };
 
-// Export the component
+
 export default ServicesSection;

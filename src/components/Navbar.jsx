@@ -2,18 +2,18 @@ import { useState, useEffect, useRef } from "react";
 import logo from "../assets/android-chrome-512x512.png";
 import { motion, AnimatePresence } from "framer-motion";
 import PropTypes from "prop-types";
-import BookingFormModal from "./BookingFormModal"; // Add the correct path here
+import BookingFormModal from "./BookingFormModal"; 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("Home");
   const [isModalOpen, setIsModalOpen] = useState(false);
   
-  // Booking form modal handlers
+  
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  // Scroll Spy using IntersectionObserver
+  
   useEffect(() => {
     const sectionIds = ["Home", "portfolio", "services", "testimonials"];
     const observers = [];
@@ -75,13 +75,22 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Hire Us Button - Now opens the booking modal */}
+        {/* Desktop Hire Us Button */}
         <motion.button
           className="hidden md:block bg-[#177399] text-white hover:bg-[#155b75] px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
           whileHover={{ scale: 1.1 }}
           onClick={openModal}
         >
-          Hire Us
+          Contact Us
+        </motion.button>
+
+        {/* Mobile Contact us Button - Now visible outside the menu */}
+        <motion.button
+          className="md:hidden bg-[#177399] text-white hover:bg-[#155b75] px-4 py-1 rounded-full text-sm mr-3"
+          whileHover={{ scale: 1.05 }}
+          onClick={openModal}
+        >
+          Contact Us
         </motion.button>
 
         {/* Mobile Menu Button */}
@@ -115,18 +124,8 @@ const Navbar = () => {
                 {item.charAt(0).toUpperCase() + item.slice(1)}
               </motion.a>
             ))}
-
-            {/* Mobile Hire Us Button - Now opens the booking modal */}
-            <motion.button
-              className="bg-[#177399] text-white hover:bg-[#155b75] px-6 py-2 rounded-full transition-all duration-300 w-full max-w-[200px]"
-              whileHover={{ scale: 1.1 }}
-              onClick={() => {
-                setIsOpen(false); // Close the mobile menu
-                openModal();     // Open the booking form
-              }}
-            >
-              Hire Us
-            </motion.button>
+            
+            {/* Removed the Contact us button from inside the mobile menu */}
           </div>
         </motion.div>
       </motion.nav>
