@@ -128,6 +128,13 @@ function Portfolio() {
           justify-content: center;
         }
         
+        /* Adjust carousel height for mobile */
+        @media (max-width: 768px) {
+          .carousel-track {
+            height: 350px;
+          }
+        }
+        
         .carousel-item {
           position: absolute;
           transition: all 0.8s cubic-bezier(0.33, 1, 0.68, 1);
@@ -171,6 +178,19 @@ function CurvedCarousel({ projects, onProjectClick }) {
   const [hoveredIndex, setHoveredIndex] = useState(null)
   const carouselRef = useRef(null)
   const isInView = useInView(carouselRef, { once: true })
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const totalItems = projects.length
 
@@ -192,7 +212,67 @@ function CurvedCarousel({ projects, onProjectClick }) {
     // Calculate aspect ratio to preserve full image
     const aspectRatio = 16 / 9 // Default aspect ratio
 
-    // Middle item
+    // Mobile view adjustments
+    if (isMobile) {
+      // Middle item - larger for mobile
+      if (position === 0) {
+        return {
+          left: "50%",
+          transform: "translateX(-50%) scale(1)",
+          zIndex: 5,
+          opacity: 1,
+          width: "75vw", // Increased from 32vw for mobile
+          height: "auto",
+          aspectRatio: aspectRatio,
+          filter: "brightness(100%)",
+          isClickable: true,
+        }
+      }
+
+      // Only show one item on each side for mobile
+      if (position === -1) {
+        return {
+          left: "15%",
+          transform: "translateX(-50%) scale(0.7) perspective(800px) rotateY(25deg)",
+          zIndex: 4,
+          opacity: 0.7,
+          width: "40vw", // Increased for mobile
+          height: "auto",
+          aspectRatio: aspectRatio,
+          filter: "brightness(60%)",
+          isClickable: true,
+        }
+      }
+
+      if (position === 1) {
+        return {
+          left: "85%",
+          transform: "translateX(-50%) scale(0.7) perspective(800px) rotateY(-25deg)",
+          zIndex: 4,
+          opacity: 0.7,
+          width: "40vw", // Increased for mobile
+          height: "auto",
+          aspectRatio: aspectRatio,
+          filter: "brightness(60%)",
+          isClickable: true,
+        }
+      }
+
+      // Hide other items on mobile
+      return {
+        left: position < 0 ? "-20%" : "120%",
+        transform: "translateX(-50%) scale(0.4)",
+        zIndex: 1,
+        opacity: 0,
+        width: "30vw",
+        height: "auto",
+        aspectRatio: aspectRatio,
+        filter: "brightness(30%)",
+        isClickable: false,
+      }
+    }
+
+    // Desktop view - original settings
     if (position === 0) {
       return {
         left: "50%",
@@ -436,6 +516,19 @@ CurvedCarousel.propTypes = {
 function ProjectModal({ project, onClose }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const images = [project.src, ...project.relatedImages]
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % images.length)
@@ -454,7 +547,9 @@ function ProjectModal({ project, onClose }) {
       exit={{ opacity: 0 }}
     >
       <motion.div
-        className="relative bg-[#737373] p-4 rounded-lg shadow-xl w-[70vw] max-w-4xl text-white max-h-[80vh] overflow-y-auto"
+        className={`relative bg-[#737373] p-4 rounded-lg shadow-xl ${
+          isMobile ? "w-[90vw]" : "w-[70vw]"
+        } max-w-4xl text-white max-h-[90vh] overflow-y-auto`}
         initial={{ scale: 0.7, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
@@ -466,9 +561,9 @@ function ProjectModal({ project, onClose }) {
           ✕
         </button>
 
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className={`flex ${isMobile ? "flex-col" : "flex-row"} gap-4`}>
           {/* Main image and gallery */}
-          <div className="relative w-full md:w-3/5">
+          <div className={`relative w-full ${isMobile ? "" : "md:w-3/5"}`}>
             <div className="relative aspect-video bg-black rounded-lg overflow-hidden">
               <motion.img
                 src={images[currentImageIndex]}
@@ -519,12 +614,16 @@ function ProjectModal({ project, onClose }) {
               </button>
             </div>
 
-            {/* Thumbnails */}
+            {/* Thumbnails - smaller on mobile */}
             <div className="flex gap-2 mt-3 flex-wrap">
               {images.map((img, idx) => (
                 <div
                   key={idx}
-                  className={`w-12 h-12 cursor-pointer rounded overflow-hidden border-2 transition-all duration-300 ${currentImageIndex === idx ? "border-white" : "border-transparent"}`}
+                  className={`${
+                    isMobile ? "w-10 h-10" : "w-12 h-12"
+                  } cursor-pointer rounded overflow-hidden border-2 transition-all duration-300 ${
+                    currentImageIndex === idx ? "border-white" : "border-transparent"
+                  }`}
                   onClick={() => setCurrentImageIndex(idx)}
                 >
                   <img
@@ -538,9 +637,9 @@ function ProjectModal({ project, onClose }) {
           </div>
 
           {/* Project details */}
-          <div className="w-full md:w-2/5">
+          <div className={`w-full ${isMobile ? "mt-4" : "md:w-2/5"}`}>
             <h2 className="text-xl font-bold mb-3">{project.title}</h2>
-            <p className="text-sm">{project.description}</p>
+            <p className={`${isMobile ? "text-sm" : "text-sm"}`}>{project.description}</p>
           </div>
         </div>
       </motion.div>
