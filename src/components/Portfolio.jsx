@@ -8,15 +8,23 @@ import PropTypes from "prop-types"
 const sliderData = [
   [
     {
-      color: "#e3e5e7",
-      src: "/claimcore/project1img.png",
-      title: "Claim Core",
+      color: "#f5f5f5",
+      src: "/jetclean/1.png",
+      title: "Jet Clean",
       description:
-        "The Claim Core Project is a centralized system that retrieves claim data via APIs and streamlines the entire claim lifecycle with validation workflows, role-based access, and real-time tracking.",
-      relatedImages: ["/claimcore/2.png", "/claimcore/3.png", "/claimcore/4.png"],
+        " Jet Clean offers professional and reliable laundry services, ensuring your clothes are cleaned, folded, and delivered with care. From everyday wear to delicate fabrics, we handle it all with top-quality equipment and attention to detail. Our service focuses on convenience, hygiene, and customer satisfaction, making laundry day hassle-free for individuals and families alike.",
+      relatedImages: ["/jetclean/2.png", "/jetclean/3.png", "/jetclean/4.png"],
       link: "#",
     },
-    // Other projects remain the same
+    {
+      color: "#f5f5f5",
+      src: "/nordicxpress/1.png",
+      title: "Nordic Xpress",
+      description:
+        " Nordic Xpress website to deliver a seamless, modern, and informative experience for a premium transportation service. The site highlights key offerings like airport transfers, cruise port transfers, business travel, leisure travel, and private tours—each presented with intuitive icons and clear, engaging descriptions. Designed for both functionality and elegance, the website ensures users can easily find and book the services they need with confidence and ease.",
+      relatedImages: ["/nordicxpress/2.png", "/nordicxpress/3.png", "/nordicxpress/4.png"],
+      link: "#",
+    },
     {
       color: "#f2f2f2",
       src: "/GETXM/1.png",
@@ -26,6 +34,17 @@ const sliderData = [
       relatedImages: ["/GETXM/2.png", "/GETXM/3.png", "/GETXM/4.png"],
       link: "#",
     },
+    {
+      color: "#e3e5e7",
+      src: "/claimcore/project1img.png",
+      title: "Claim Core",
+      description:
+        "The Claim Core Project is a centralized system that retrieves claim data via APIs and streamlines the entire claim lifecycle with validation workflows, role-based access, and real-time tracking.",
+      relatedImages: ["/claimcore/2.png", "/claimcore/3.png", "/claimcore/4.png"],
+      link: "#",
+    },
+    // Other projects remain the same
+ 
     {
       color: "#e5e5e5",
       src: "/pixel Tech/1.png",
@@ -53,24 +72,7 @@ const sliderData = [
       relatedImages: ["/tinytots/2.png", "/tinytots/3.png", "/tinytots/4.png"],
       link: "#",
     },
-    {
-      color: "#f5f5f5",
-      src: "/nordicxpress/1.png",
-      title: "Nordic Xpress",
-      description:
-        " Nordic Xpress website to deliver a seamless, modern, and informative experience for a premium transportation service. The site highlights key offerings like airport transfers, cruise port transfers, business travel, leisure travel, and private tours—each presented with intuitive icons and clear, engaging descriptions. Designed for both functionality and elegance, the website ensures users can easily find and book the services they need with confidence and ease.",
-      relatedImages: ["/nordicxpress/2.png", "/nordicxpress/3.png", "/nordicxpress/4.png"],
-      link: "#",
-    },
-    {
-      color: "#f5f5f5",
-      src: "/jetclean/1.png",
-      title: "Jet Clean",
-      description:
-        " Jet Clean offers professional and reliable laundry services, ensuring your clothes are cleaned, folded, and delivered with care. From everyday wear to delicate fabrics, we handle it all with top-quality equipment and attention to detail. Our service focuses on convenience, hygiene, and customer satisfaction, making laundry day hassle-free for individuals and families alike.",
-      relatedImages: ["/jetclean/2.png", "/jetclean/3.png", "/jetclean/4.png"],
-      link: "#",
-    },
+   
     {
       color: "#f5f5f5",
       src: "/manqoosh/1.png",

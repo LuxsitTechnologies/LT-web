@@ -212,7 +212,7 @@ const Footer = () => {
                   className="bg-[#177399] text-white py-3 px-6 rounded-full font-medium text-sm flex items-center justify-center transition-all duration-300 hover:bg-[#146088] hover:shadow-lg hover:shadow-[#177399]/20 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#177399] focus:ring-opacity-50 group relative overflow-hidden"
                 >
                   <span className="relative z-10">
-                    Hire Us
+                    Contact Us
                   </span>
                   <span className="absolute inset-0 bg-gradient-to-r from-[#177399] to-[#1a8fbf] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 </button>
