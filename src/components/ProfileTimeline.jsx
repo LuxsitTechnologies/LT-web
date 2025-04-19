@@ -8,7 +8,7 @@ export default function ProfileTimeline() {
   const [activeSection, setActiveSection] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Functions to handle the modal
+  
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
@@ -45,7 +45,7 @@ export default function ProfileTimeline() {
     },
   ];
 
-  // Use IntersectionObserver to update the active section based on scroll.
+  
   useEffect(() => {
     const observers = sections.map((_, index) => {
       const observer = new IntersectionObserver(
@@ -68,14 +68,14 @@ export default function ProfileTimeline() {
     };
   }, []);
 
-  // Calculate progress as a percentage based on the active section.
+  
   const progressPercent =
     sections.length > 1 ? (activeSection / (sections.length - 1)) * 100 : 0;
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center" ref={containerRef}>
       <div className="max-w-7xl w-full px-4 py-16 md:py-24">
-        {/* Section Header */}
+        
         <div className="text-center mb-16">
         <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
         EXECUTION STRATEGY
@@ -86,11 +86,11 @@ export default function ProfileTimeline() {
           </p>
         </div>
 
-        {/* Center the timeline content */}
+      
         <div className="flex justify-center">
-          {/* Timeline Section */}
+        
           <div className="relative max-w-md w-full">
-            {/* Progress Line Container */}
+    
             <div className="absolute left-5 top-5 md:left-[40px] md:top-[40px] w-0.5 h-[calc(100%-40px)] bg-white/10">
               <motion.div
                 className="w-full bg-[#177399]"
@@ -99,7 +99,7 @@ export default function ProfileTimeline() {
               />
             </div>
 
-            {/* Timeline Items */}
+            
             <div className="space-y-12 md:space-y-16">
               {sections.map((section, index) => (
                 <motion.div
@@ -140,7 +140,7 @@ export default function ProfileTimeline() {
         </div>
       </div>
 
-      {/* Booking Form Modal */}
+
       <BookingFormModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );

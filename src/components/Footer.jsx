@@ -8,13 +8,13 @@ import {
   FaMinus,
   FaInstagram,
 } from "react-icons/fa";
-import BookingFormModal from "./BookingFormModal"; // Import the BookingFormModal component
+import BookingFormModal from "./BookingFormModal"; 
 
 const Footer = () => {
   const footerRef = useRef(null);
   const [selectedOffice, setSelectedOffice] = useState("PK");
   const [openFaqId, setOpenFaqId] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const officeInfo = {
     PK: {
@@ -101,12 +101,12 @@ const Footer = () => {
     setOpenFaqId(openFaqId === id ? null : id);
   };
 
-  // Function to open the booking modal
+  
   const openModal = () => {
     setIsModalOpen(true);
   };
 
-  // Function to close the booking modal
+  
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -153,7 +153,7 @@ const Footer = () => {
             <div className="space-y-2 text-gray-400 mt-4">
               <p>
                 <span className="block">
-                  Email Us:
+                  Email:
                   <a
                     href={`https://mail.google.com/mail/?view=cm&fs=1&to=${officeInfo[selectedOffice].email}`}
                     target="_blank"

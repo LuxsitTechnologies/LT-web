@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from "react"
 import { motion, useInView } from "framer-motion"
 import PropTypes from "prop-types"
 
-// Data structure remains the same
+
 const sliderData = [
   [
     {
@@ -43,7 +43,7 @@ const sliderData = [
       relatedImages: ["/claimcore/2.png", "/claimcore/3.png", "/claimcore/4.png"],
       link: "#",
     },
-    // Other projects remain the same
+    
  
     {
       color: "#e5e5e5",

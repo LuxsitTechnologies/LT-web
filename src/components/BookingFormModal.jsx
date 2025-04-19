@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 
-// BookingFormModal Component
+
 const BookingFormModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -45,7 +45,7 @@ const BookingFormModal = ({ isOpen, onClose }) => {
     }, 5000);
   };
 
-  // Handle outside click
+  
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
@@ -62,7 +62,7 @@ const BookingFormModal = ({ isOpen, onClose }) => {
     };
   }, [isOpen, onClose]);
 
-  // Animation variants
+  
   const modalVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: { 
@@ -127,7 +127,7 @@ const BookingFormModal = ({ isOpen, onClose }) => {
             </svg>
           </button>
           
-          {/* Modified heading with !text-white to force white color */}
+      
           <motion.h1 
             className="text-xl md:text-2xl font-bold mb-2 text-center !text-white"
             style={{ color: "white !important" }}

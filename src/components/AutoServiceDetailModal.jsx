@@ -34,14 +34,14 @@ const AutomationDetailModal = ({ isOpen, onClose }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      onClick={onClose} // Clicking on the background closes the modal
+      onClick={onClose} 
     >
       <motion.div 
         className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto p-8 relative shadow-xl"
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        onClick={(e) => e.stopPropagation()} // Prevents modal click from closing it
+        onClick={(e) => e.stopPropagation()} 
       >
         <button 
           onClick={onClose} 

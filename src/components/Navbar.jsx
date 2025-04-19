@@ -41,7 +41,7 @@ const Navbar = () => {
     };
   }, []);
 
-  // Navigation link animation
+  
   const navVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
@@ -54,12 +54,12 @@ const Navbar = () => {
         initial="hidden"
         animate="visible"
       >
-        {/* Logo */}
+      
         <a href="#" className="text-xl font-bold hover:scale-105 transition-transform">
           <img src={logo} alt="Logo" className="h-14 " />
         </a>
 
-        {/* Desktop Navigation */}
+        
         <div className="hidden md:flex flex-grow justify-center space-x-8">
           {["Home", "portfolio", "services", "testimonials"].map((item) => (
             <motion.a
@@ -75,7 +75,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Desktop Hire Us Button */}
+      
         <motion.button
           className="hidden md:block bg-[#177399] text-white hover:bg-[#155b75] px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
           whileHover={{ scale: 1.1 }}
@@ -84,7 +84,7 @@ const Navbar = () => {
           Contact Us
         </motion.button>
 
-        {/* Mobile Contact us Button - Now visible outside the menu */}
+      
         <motion.button
           className="md:hidden bg-[#177399] text-white hover:bg-[#155b75] px-4 py-1 rounded-full text-sm mr-3"
           whileHover={{ scale: 1.05 }}
@@ -93,7 +93,7 @@ const Navbar = () => {
           Contact Us
         </motion.button>
 
-        {/* Mobile Menu Button */}
+        
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden p-2 rounded-lg hover:bg-gray-800 focus:outline-none transition-colors"
@@ -105,7 +105,7 @@ const Navbar = () => {
           </div>
         </motion.button>
 
-        {/* Mobile Menu */}
+    
         <motion.div
           className={`fixed md:hidden top-16 left-0 right-0 bg-black/70 backdrop-blur-md overflow-hidden transition-all ease-in-out z-50 ${isOpen ? "h-screen opacity-100" : "h-0 opacity-0"}`}
           animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
@@ -125,12 +125,12 @@ const Navbar = () => {
               </motion.a>
             ))}
             
-            {/* Removed the Contact us button from inside the mobile menu */}
+          
           </div>
         </motion.div>
       </motion.nav>
 
-      {/* Booking Form Modal */}
+    
       <BookingFormModal isOpen={isModalOpen} onClose={closeModal} />
     </>
   );

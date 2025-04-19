@@ -67,13 +67,13 @@ function FloatingPaths({ position }) {
             strokeOpacity={0.1 + (path.id % 36) * 0.03}
             initial={{ pathLength: 0 }}
             animate={{ 
-              // Show animation immediately when "both" or when not "right"
+              
               pathLength: animatingSide === "right" ? 0 : 1 
             }}
             transition={{
               duration: animationDuration,
               ease: "linear",
-              delay: 0, // No delay 
+              delay: 0, 
             }}
           />
         ))}
@@ -87,13 +87,13 @@ function FloatingPaths({ position }) {
             strokeOpacity={0.1 + ((path.id-100) % 36) * 0.03}
             initial={{ pathLength: 0 }}
             animate={{ 
-              // Show animation immediately when "both" or when not "left"
+            
               pathLength: animatingSide === "left" ? 0 : 1
             }}
             transition={{
               duration: animationDuration,
               ease: "linear",
-              delay: 0, // No delay 
+              delay: 0, 
             }}
           />
         ))}

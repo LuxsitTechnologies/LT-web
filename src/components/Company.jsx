@@ -8,10 +8,10 @@ const Company = () => {
     if (!scrollContainer) return;
 
     let scrollPosition = 0;
-    const scrollSpeed = 0.04; // Reduced speed for smoother movement
+    const scrollSpeed = 0.04; 
     const totalWidth = scrollContainer.scrollWidth;
 
-    // Clone the logos to create infinite scroll effect
+    
     const cloneLogos = () => {
       const logos = scrollContainer.querySelectorAll('.logo-item');
       logos.forEach(logo => {
